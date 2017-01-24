@@ -357,7 +357,7 @@
   <div class="recommendation">
       <h2>hahaha</h2>
   	  <?php
-       
+       echo "eee";
 	  {*foreach ($categories as $category){*}
 	    {*echo $category['category_id'];*}
 
