@@ -357,7 +357,7 @@
   <div class="recommendation">
       <h2>wwwwwhahaha</h2>
   	  <?php
-        var_dump($tmp);
+        {*var_dump($tmp);*}
 	  } ?>
 
   </div>

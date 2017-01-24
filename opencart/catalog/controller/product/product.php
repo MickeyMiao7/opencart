@@ -468,7 +468,7 @@ class ControllerProductProduct extends Controller {
 
 
 			// Get recommendation info for the product
-			$categories = $this->model_catalog_product->getCategories($product_id);
+//			$categories = $this->model_catalog_product->getCategories($product_id);
 //			$this->data['tmp'] = $categories;
 			//			foreach ($categories as $category){
 //                $data = array(
