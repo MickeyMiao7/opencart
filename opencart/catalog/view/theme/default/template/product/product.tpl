@@ -355,11 +355,8 @@
 
 
   <div class="recommendation">
-      <h2>wwwwwhahaha<h2>
+      <h2>wwwwwhahaha</h2>
   	  <?php
-
-	  foreach ($categories as $category){
-	    echo $category['category_id'];
         var_dump($tmp);
 	  } ?>
 
