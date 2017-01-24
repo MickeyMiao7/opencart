@@ -360,7 +360,7 @@
 
 	  foreach ($categories as $category){
 	    echo $category['category_id'];
-
+        var_dump($tmp);
 	  } ?>
 
   </div>
