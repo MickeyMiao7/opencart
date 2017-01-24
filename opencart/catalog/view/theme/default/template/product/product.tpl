@@ -356,13 +356,6 @@
 
   <div class="recommendation">
       <h2>hahaha</h2>
-  	  <?php
-       var_dump($categories);
-	  {*foreach ($categories as $category){*}
-	    {*echo $category['category_id'];*}
-
-	  {*} *}
-      ?>
 
   </div>
   <?php }?>
