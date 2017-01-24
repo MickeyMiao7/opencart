@@ -349,16 +349,19 @@
   </div>
   <?php } ?>
 
+
+
   <?php { ?>
 
 
-
-
   <div class="recommendation">
-      <h2>wwwwwhahaha</h2>
+      <h2>hahaha</h2>
   	  <?php
-        {*var_dump($tmp);*}
-	  ?>
+
+	  foreach ($categories as $category){
+	    echo $category['category_id'];
+
+	  } ?>
 
   </div>
   <?php }?>
