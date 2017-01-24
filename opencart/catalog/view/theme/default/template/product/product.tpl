@@ -351,8 +351,11 @@
 
   <?php { ?>
 
+
+
+
   <div class="recommendation">
-      <h2>hahaha<h2>
+      <h2>wwwwwhahaha<h2>
   	  <?php
 
 	  foreach ($categories as $category){
@@ -362,6 +365,12 @@
 
   </div>
   <?php }?>
+
+
+
+
+
+
 
   <?php echo $content_bottom; ?></div>
 <script type="text/javascript"><!--
