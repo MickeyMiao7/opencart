@@ -358,7 +358,7 @@
       <h2>wwwwwhahaha</h2>
   	  <?php
         {*var_dump($tmp);*}
-	  } ?>
+	  ?>
 
   </div>
   <?php }?>
