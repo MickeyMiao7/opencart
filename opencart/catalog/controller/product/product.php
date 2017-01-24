@@ -470,7 +470,7 @@ class ControllerProductProduct extends Controller {
 			// Get recommendation info for the product
 			$categories = $this->model_catalog_product->getCategories($product_id);
 //			 $this->data['categories'] = array();
-			$this->data['categories'] = $categories;
+//			$this->data['categories'] = $categories;
 
 
 
