@@ -357,7 +357,7 @@
   <div class="recommendation">
       <h2>hahaha</h2>
   	  <?php
-       $count_number = count($tmp);
+       var_dump($categories);
        echo $count_number;
        var_dump($tmp);
 
