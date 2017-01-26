@@ -472,7 +472,7 @@ class ControllerProductProduct extends Controller {
 //			 $this->data['categories'] = array();
 //			$this->data['categories'] = $categories;
 			$products_= array();
-            $this->data['category'] = $categories;
+            $this->data['categories'] = $categories;
             foreach ($categories as $category) {
                 $data = array('filter_category_id' => $category['category_id']);
                 $products = $this->model_catalog_product->getProducts($data);
