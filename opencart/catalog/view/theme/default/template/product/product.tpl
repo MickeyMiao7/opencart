@@ -355,7 +355,7 @@
 
 
 
-  <div class="recommendation">
+
     <div class="recommendation-title">
       <h2>You Might Also Like</h2>
       <?php
@@ -363,7 +363,7 @@
       ?>
     </div>
   <br>
-
+<!--
     <?php if (count($best_seller_products) == 0) { ?>
       <p>Sorry, No product for recommendation for this product</p>
     <?php } ?>
@@ -402,7 +402,7 @@
 
   </div>
 
-
+--->
 
   <!--
 
