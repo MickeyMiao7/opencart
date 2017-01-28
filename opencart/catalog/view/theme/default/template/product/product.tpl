@@ -250,67 +250,6 @@
 
 
 
-
-  <?php if (count($best_seller_products) == 0) { ?>
-  <div class="product-recommendation">
-    <div class="product-recommendation-title">
-      <h2>Oops! No product under the same category. :(</h2>
-      <p>You may want to check out other categories.</p>
-    </div>
-  </div>
-  <?php } else { ?>
-  <div class="product-recommendation">
-    <div class="product-recommendation-title">
-      <h2>You might also like...</h2>
-    </div>
-    <div class="product-recommendation-products">
-      <?php foreach ($best_seller_products as $product) { ?>
-      <div>
-        <?php if (in_array($product['product_id'], $best_seller_product_ids)) { ?>
-        <div class="best-seller"><img src="image/data/bestseller.png" /></div>
-        <?php } ?>
-
-        <?php if ($product['thumb']) { ?>
-        <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
-        <?php } ?>
-        <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
-        <?php if ($product['price']) { ?>
-        <div class="price">
-          <?php if (!$product['special']) { ?>
-          <?php echo $product['price']; ?>
-          <?php } else { ?>
-          <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
-          <?php } ?>
-        </div>
-        <?php } ?>
-        <?php if ($product['rating']) { ?>
-        <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
-        <?php } ?>
-        <a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a>
-      </div>
-      <?php } // end of foreach ?>
-    </div><!-- end of .product-recommendation-products -->
-  </div><!-- end of #product-recommendation -->
-
-  <?php } ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <div id="tabs" class="htabs"><a href="#tab-description"><?php echo $tab_description; ?></a>
     <?php if ($attribute_groups) { ?>
     <a href="#tab-attribute"><?php echo $tab_attribute; ?></a>
@@ -404,6 +343,63 @@
     </div>
   </div>
   <?php } ?>
+
+
+
+
+
+
+  <?php if (count($best_seller_products) == 0) { ?>
+  <div class="product-recommendation">
+    <div class="product-recommendation-title">
+      <h2>Oops! No product under the same category. :(</h2>
+      <p>You may want to check out other categories.</p>
+    </div>
+  </div>
+  <?php } else { ?>
+  <div class="product-recommendation">
+    <div class="product-recommendation-title">
+      <h2>You might also like...</h2>
+    </div>
+    <div class="product-recommendation-products">
+      <?php foreach ($best_seller_products as $product) { ?>
+      <div>
+        <?php if (in_array($product['product_id'], $best_seller_product_ids)) { ?>
+        <div class="best-seller"><img src="image/data/bestseller.png" /></div>
+        <?php } ?>
+
+        <?php if ($product['thumb']) { ?>
+        <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
+        <?php } ?>
+        <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
+        <?php if ($product['price']) { ?>
+        <div class="price">
+          <?php if (!$product['special']) { ?>
+          <?php echo $product['price']; ?>
+          <?php } else { ?>
+          <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
+          <?php } ?>
+        </div>
+        <?php } ?>
+        <?php if ($product['rating']) { ?>
+        <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
+        <?php } ?>
+        <a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a>
+      </div>
+      <?php } // end of foreach ?>
+    </div><!-- end of .product-recommendation-products -->
+  </div><!-- end of #product-recommendation -->
+
+  <?php } ?>
+
+
+
+
+
+
+
+
+
   <?php if ($tags) { ?>
   <div class="tags"><b><?php echo $text_tags; ?></b>
     <?php for ($i = 0; $i < count($tags); $i++) { ?>
