@@ -360,7 +360,7 @@
        {*var_dump($categories);*}
        {*echo count($best_seller_products);*}
          {*var_dump($best_seller_products);*}
-        var_dump($best_seller_product_ids)
+        var_dump($best_seller_products_ids);
       ?>
 
   </div>

@@ -468,19 +468,17 @@ class ControllerProductProduct extends Controller {
 
 
 			// Get recommendation info for the product
-            $this->data['best_seller_products'] = array();
 			$categories = $this->model_catalog_product->getCategories($product_id);
-//			$products_= array();
 
 			$best_seller_products = array();
 			$best_seller_products_ids = array();
             foreach ($categories as $category) {
                 $data = array('filter_category_id' => $category['category_id']);
-//                $products = $this->model_catalog_product->getProducts($data);
+                $products = $this->model_catalog_product->getProducts($data);
                 $best_seller_products_temp = $this->model_catalog_product->getBestSellerProductsByCategory($category['category_id'], 1);
-//                foreach ($best_seller_products_temp as $product) {
-//                    $this->data['best_seller_product_ids'][] = $product['product_id'];
-//                }
+                foreach ($best_seller_products_temp as $product) {
+                    $this->data['best_seller_products_ids'][] = $product['product_id'];
+                }
 //
 
 //				foreach ($best_seller_products_temp as $best_seller_product){
@@ -527,13 +525,13 @@ class ControllerProductProduct extends Controller {
 
 //                foreach($products as $product){
 //				}
-            }
+//            }
 //            $best_seller_products = $this->model_catalog_product->getBestSellerProducts($number_of_products);
 //            $best_seller_products = $this->model_catalog_product->getBestSellerProducts(3);
 //            $this->data['tmp'] = $best_seller_products;
 //            foreach ($best_seller_products as $product) {
 //                $this->data['best_seller_product_ids'][] = $product['product_id'];
-//            }
+            }
 
 
 
