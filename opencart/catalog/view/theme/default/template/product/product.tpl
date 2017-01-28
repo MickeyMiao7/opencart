@@ -351,7 +351,7 @@
 
 
 
-  <?php { ?>
+ 
 
 
   <div class="recommendation">
@@ -405,6 +405,8 @@
   </div><!-- end of #product-recommendation -->
 
   <?php } ?>
+
+
 
 
 
