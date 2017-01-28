@@ -469,13 +469,13 @@ class ControllerProductProduct extends Controller {
 
 			// Get recommendation info for the product
 			$categories = $this->model_catalog_product->getCategories($product_id);
-            $product_ids = array($product_id);
+            $this->data['best_seller_products_ids'] = array();
             foreach ($categories as $category) {
                 $data = array('filter_category_id' => $category['category_id']);
                 $products = $this->model_catalog_product->getProducts($data);
                 $best_seller_products_temp = $this->model_catalog_product->getBestSellerProductsByCategory($category['category_id'], 3);
                 foreach ($best_seller_products_temp as $product) {
-                	if (in_array($product['product_id'], $product_ids) || $product['product_id'] == $product_id) {
+                	if (in_array($product['product_id'],$this->data['best_seller_products_ids']) || $product['product_id'] == $product_id) {
                         continue;
                     }
                     $product_ids[] = $product['product_id'];
