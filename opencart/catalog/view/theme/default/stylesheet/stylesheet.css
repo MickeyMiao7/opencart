@@ -1235,6 +1235,81 @@ ul.box-filter > li ul {
 .compare-info .price-new {
 	font-weight: bold;
 }
+
+
+
+
+
+
+
+
+
+.product-recommendation {
+	margin-top: 20px;
+	margin-bottom: 30px;
+	border-top: 1px solid #DBDEE1;
+	border-bottom: 1px solid #DBDEE1;
+	background: #F8F8F8;
+	padding: 20px 20px 5px 20px;
+}
+.product-recommendation-title {
+	margin-bottom: 20px;
+}
+.product-recommendation-products .best-seller img {
+	height: 50px;
+}
+.product-recommendation-products .best-seller {
+	position: absolute;
+	margin-left: 50px;
+}
+.product-recommendation-products .slick-slide {
+	margin-right: 80px;
+}
+.product-recommendation-products .name a {
+	color: #38B0E3;
+	font-weight: bold;
+	text-decoration: none;
+	display: block;
+	margin-bottom: 4px;
+}
+.product-recommendation-products .price {
+	display: block;
+	font-weight: bold;
+	color: #333333;
+	margin-bottom: 4px;
+}
+.product-recommendation-products .price-old {
+	color: #F00;
+	text-decoration: line-through;
+}
+.product-recommendation-products .price-new {
+	font-weight: bold;
+}
+.product-recommendation-products .rating {
+	display: block;
+	margin-bottom: 4px;
+}
+.product-recommendation-products button {
+	height: 150px;
+	margin-top: -75px;
+}
+.product-recommendation-products button:hover,
+.product-recommendation-products button:focus {
+	background-color: #D5D5D5;
+}
+.product-recommendation-products button.slick-prev {
+	left: -20px;
+}
+.product-recommendation-products button.slick-next {
+	right: -20px;
+}
+
+
+
+
+
+
+
 /* wishlist */
 .wishlist-info table {
 	width: 100%;
