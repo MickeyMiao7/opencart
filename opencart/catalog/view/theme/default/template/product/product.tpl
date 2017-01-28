@@ -57,19 +57,19 @@
       <?php } ?>
       <?php if ($profiles): ?>
       <div class="option">
-          <h2><span class="required">*</span><?php echo $text_payment_profile ?></h2>
-          <br />
-          <select name="profile_id">
-              <option value=""><?php echo $text_select; ?></option>
-              <?php foreach ($profiles as $profile): ?>
-              <option value="<?php echo $profile['profile_id'] ?>"><?php echo $profile['name'] ?></option>
-              <?php endforeach; ?>
-          </select>
-          <br />
-          <br />
-          <span id="profile-description"></span>
-          <br />
-          <br />
+        <h2><span class="required">*</span><?php echo $text_payment_profile ?></h2>
+        <br />
+        <select name="profile_id">
+          <option value=""><?php echo $text_select; ?></option>
+          <?php foreach ($profiles as $profile): ?>
+          <option value="<?php echo $profile['profile_id'] ?>"><?php echo $profile['name'] ?></option>
+          <?php endforeach; ?>
+        </select>
+        <br />
+        <br />
+        <span id="profile-description"></span>
+        <br />
+        <br />
       </div>
       <?php endif; ?>
       <?php if ($options) { ?>
@@ -87,9 +87,9 @@
             <option value=""><?php echo $text_select; ?></option>
             <?php foreach ($option['option_value'] as $option_value) { ?>
             <option value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
-            <?php if ($option_value['price']) { ?>
-            (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
-            <?php } ?>
+              <?php if ($option_value['price']) { ?>
+              (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
+              <?php } ?>
             </option>
             <?php } ?>
           </select>
@@ -237,8 +237,8 @@
         <div><img src="catalog/view/theme/default/image/stars-<?php echo $rating; ?>.png" alt="<?php echo $reviews; ?>" />&nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $reviews; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $text_write; ?></a></div>
         <div class="share"><!-- AddThis Button BEGIN -->
           <div class="addthis_default_style"><a class="addthis_button_compact"><?php echo $text_share; ?></a> <a class="addthis_button_email"></a><a class="addthis_button_print"></a> <a class="addthis_button_facebook"></a> <a class="addthis_button_twitter"></a></div>
-          <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js"></script> 
-          <!-- AddThis Button END --> 
+          <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js"></script>
+          <!-- AddThis Button END -->
         </div>
       </div>
       <?php } ?>
@@ -261,17 +261,17 @@
     <table class="attribute">
       <?php foreach ($attribute_groups as $attribute_group) { ?>
       <thead>
-        <tr>
-          <td colspan="2"><?php echo $attribute_group['name']; ?></td>
-        </tr>
+      <tr>
+        <td colspan="2"><?php echo $attribute_group['name']; ?></td>
+      </tr>
       </thead>
       <tbody>
-        <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
-        <tr>
-          <td><?php echo $attribute['name']; ?></td>
-          <td><?php echo $attribute['text']; ?></td>
-        </tr>
-        <?php } ?>
+      <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
+      <tr>
+        <td><?php echo $attribute['name']; ?></td>
+        <td><?php echo $attribute['text']; ?></td>
+      </tr>
+      <?php } ?>
       </tbody>
       <?php } ?>
     </table>
@@ -348,280 +348,168 @@
     <?php } ?>
   </div>
   <?php } ?>
-
-
-
-
-
-
-
-
-    <div class="recommendation-title">
-      <h2>You Might Also Like</h2>
-      <?php
-        var_dump($best_seller_products_ids);
-      ?>
-    </div>
-  <br>
-<!--
-    <?php if (count($best_seller_products) == 0) { ?>
-      <p>Sorry, No product for recommendation for this product</p>
-    <?php } ?>
-
-    <?php else{ ?>
-      <?php foreach ($best_seller_products as $product) { ?>
-        <?php if ($product['thumb']) { ?>
-          <div class="image">
-            <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a>
-          </div>
-        <?php } ?>
-
-        <div class="name">
-          <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
-        </div>
-
-        <?php if ($product['price']) { ?>
-          <div class="price">
-            <?php if (!$product['special']) { ?>
-              <?php echo $product['price']; ?>
-            <?php } else { ?>
-              <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
-            <?php } ?>
-          </div>
-        <?php } ?>
-
-        <?php if ($product['rating']) { ?>
-          <div class="rating">
-            <img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" />
-          </div>
-        <?php } ?>
-        <a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a>
-
-      <?php } ?>
-    <?php } ?>
-
-  </div>
-
---->
-
-  <!--
-
-  <?php if (count($best_seller_products) == 0) { ?>
-  <div class="product-recommendation">
-    <div class="product-recommendation-title">
-      <h2>Sorry, No product for recommendation for this product.</h2>
-    </div>
-  </div>
-  <?php } else { ?>
-
-
-  <div class="product-recommendation">
-    <div class="product-recommendation-products">
-
-      <?php foreach ($best_seller_products as $product) { ?>
-      <div>
-        <?php if (in_array($product['product_id'], $best_seller_products_ids)) { ?>
-        <div class="best-seller"><img src="image/data/bestseller.png" /></div>
-        <?php } ?>
-
-        <?php if ($product['thumb']) { ?>
-        <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
-        <?php } ?>
-        <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
-        <?php if ($product['price']) { ?>
-        <div class="price">
-          <?php if (!$product['special']) { ?>
-          <?php echo $product['price']; ?>
-          <?php } else { ?>
-          <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
-          <?php } ?>
-        </div>
-        <?php } ?>
-        <?php if ($product['rating']) { ?>
-        <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
-        <?php } ?>
-        <a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a>
-      </div>
-      <?php } // end of foreach ?>
-    </div>
-  </div>
-
-  <?php } ?>
-
--->
-
-
-
-
-
-
-
-
-
-
-
   <?php echo $content_bottom; ?></div>
 <script type="text/javascript"><!--
-$(document).ready(function() {
-	$('.colorbox').colorbox({
-		overlayClose: true,
-		opacity: 0.5,
-		rel: "colorbox"
-	});
-});
-//--></script> 
+    $(document).ready(function() {
+        $('.colorbox').colorbox({
+            overlayClose: true,
+            opacity: 0.5,
+            rel: "colorbox"
+        });
+    });
+    //--></script>
 <script type="text/javascript"><!--
 
-$('select[name="profile_id"], input[name="quantity"]').change(function(){
-    $.ajax({
-		url: 'index.php?route=product/product/getRecurringDescription',
-		type: 'post',
-		data: $('input[name="product_id"], input[name="quantity"], select[name="profile_id"]'),
-		dataType: 'json',
-        beforeSend: function() {
-            $('#profile-description').html('');
-        },
-		success: function(json) {
-			$('.success, .warning, .attention, information, .error').remove();
-            
-			if (json['success']) {
-                $('#profile-description').html(json['success']);
-			}	
-		}
-	});
-});
-    
-$('#button-cart').bind('click', function() {
-	$.ajax({
-		url: 'index.php?route=checkout/cart/add',
-		type: 'post',
-		data: $('.product-info input[type=\'text\'], .product-info input[type=\'hidden\'], .product-info input[type=\'radio\']:checked, .product-info input[type=\'checkbox\']:checked, .product-info select, .product-info textarea'),
-		dataType: 'json',
-		success: function(json) {
-			$('.success, .warning, .attention, information, .error').remove();
-			
-			if (json['error']) {
-				if (json['error']['option']) {
-					for (i in json['error']['option']) {
-						$('#option-' + i).after('<span class="error">' + json['error']['option'][i] + '</span>');
-					}
-				}
-                
-                if (json['error']['profile']) {
-                    $('select[name="profile_id"]').after('<span class="error">' + json['error']['profile'] + '</span>');
+    $('select[name="profile_id"], input[name="quantity"]').change(function(){
+        $.ajax({
+            url: 'index.php?route=product/product/getRecurringDescription',
+            type: 'post',
+            data: $('input[name="product_id"], input[name="quantity"], select[name="profile_id"]'),
+            dataType: 'json',
+            beforeSend: function() {
+                $('#profile-description').html('');
+            },
+            success: function(json) {
+                $('.success, .warning, .attention, information, .error').remove();
+
+                if (json['success']) {
+                    $('#profile-description').html(json['success']);
                 }
-			} 
-			
-			if (json['success']) {
-				$('#notification').html('<div class="success" style="display: none;">' + json['success'] + '<img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>');
-					
-				$('.success').fadeIn('slow');
-					
-				$('#cart-total').html(json['total']);
-				
-				$('html, body').animate({ scrollTop: 0 }, 'slow'); 
-			}	
-		}
-	});
-});
-//--></script>
+            }
+        });
+    });
+
+    $('#button-cart').bind('click', function() {
+        $.ajax({
+            url: 'index.php?route=checkout/cart/add',
+            type: 'post',
+            data: $('.product-info input[type=\'text\'], .product-info input[type=\'hidden\'], .product-info input[type=\'radio\']:checked, .product-info input[type=\'checkbox\']:checked, .product-info select, .product-info textarea'),
+            dataType: 'json',
+            success: function(json) {
+                $('.success, .warning, .attention, information, .error').remove();
+
+                if (json['error']) {
+                    if (json['error']['option']) {
+                        for (i in json['error']['option']) {
+                            $('#option-' + i).after('<span class="error">' + json['error']['option'][i] + '</span>');
+                        }
+                    }
+
+                    if (json['error']['profile']) {
+                        $('select[name="profile_id"]').after('<span class="error">' + json['error']['profile'] + '</span>');
+                    }
+                }
+
+                if (json['success']) {
+                    $('#notification').html('<div class="success" style="display: none;">' + json['success'] + '<img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>');
+
+                    $('.success').fadeIn('slow');
+
+                    $('#cart-total').html(json['total']);
+
+                    $('html, body').animate({ scrollTop: 0 }, 'slow');
+                }
+            }
+        });
+    });
+    //--></script>
 <?php if ($options) { ?>
 <script type="text/javascript" src="catalog/view/javascript/jquery/ajaxupload.js"></script>
 <?php foreach ($options as $option) { ?>
 <?php if ($option['type'] == 'file') { ?>
 <script type="text/javascript"><!--
-new AjaxUpload('#button-option-<?php echo $option['product_option_id']; ?>', {
-	action: 'index.php?route=product/product/upload',
-	name: 'file',
-	autoSubmit: true,
-	responseType: 'json',
-	onSubmit: function(file, extension) {
-		$('#button-option-<?php echo $option['product_option_id']; ?>').after('<img src="catalog/view/theme/default/image/loading.gif" class="loading" style="padding-left: 5px;" />');
-		$('#button-option-<?php echo $option['product_option_id']; ?>').attr('disabled', true);
-	},
-	onComplete: function(file, json) {
-		$('#button-option-<?php echo $option['product_option_id']; ?>').attr('disabled', false);
-		
-		$('.error').remove();
-		
-		if (json['success']) {
-			alert(json['success']);
-			
-			$('input[name=\'option[<?php echo $option['product_option_id']; ?>]\']').attr('value', json['file']);
-		}
-		
-		if (json['error']) {
-			$('#option-<?php echo $option['product_option_id']; ?>').after('<span class="error">' + json['error'] + '</span>');
-		}
-		
-		$('.loading').remove();	
-	}
-});
-//--></script>
+    new AjaxUpload('#button-option-<?php echo $option['product_option_id']; ?>', {
+        action: 'index.php?route=product/product/upload',
+        name: 'file',
+        autoSubmit: true,
+        responseType: 'json',
+        onSubmit: function(file, extension) {
+            $('#button-option-<?php echo $option['product_option_id']; ?>').after('<img src="catalog/view/theme/default/image/loading.gif" class="loading" style="padding-left: 5px;" />');
+            $('#button-option-<?php echo $option['product_option_id']; ?>').attr('disabled', true);
+        },
+        onComplete: function(file, json) {
+            $('#button-option-<?php echo $option['product_option_id']; ?>').attr('disabled', false);
+
+            $('.error').remove();
+
+            if (json['success']) {
+                alert(json['success']);
+
+                $('input[name=\'option[<?php echo $option['product_option_id']; ?>]\']').attr('value', json['file']);
+            }
+
+            if (json['error']) {
+                $('#option-<?php echo $option['product_option_id']; ?>').after('<span class="error">' + json['error'] + '</span>');
+            }
+
+            $('.loading').remove();
+        }
+    });
+    //--></script>
 <?php } ?>
 <?php } ?>
 <?php } ?>
 <script type="text/javascript"><!--
-$('#review .pagination a').live('click', function() {
-	$('#review').fadeOut('slow');
-		
-	$('#review').load(this.href);
-	
-	$('#review').fadeIn('slow');
-	
-	return false;
-});			
+    $('#review .pagination a').live('click', function() {
+        $('#review').fadeOut('slow');
 
-$('#review').load('index.php?route=product/product/review&product_id=<?php echo $product_id; ?>');
+        $('#review').load(this.href);
 
-$('#button-review').bind('click', function() {
-	$.ajax({
-		url: 'index.php?route=product/product/write&product_id=<?php echo $product_id; ?>',
-		type: 'post',
-		dataType: 'json',
-		data: 'name=' + encodeURIComponent($('input[name=\'name\']').val()) + '&text=' + encodeURIComponent($('textarea[name=\'text\']').val()) + '&rating=' + encodeURIComponent($('input[name=\'rating\']:checked').val() ? $('input[name=\'rating\']:checked').val() : '') + '&captcha=' + encodeURIComponent($('input[name=\'captcha\']').val()),
-		beforeSend: function() {
-			$('.success, .warning').remove();
-			$('#button-review').attr('disabled', true);
-			$('#review-title').after('<div class="attention"><img src="catalog/view/theme/default/image/loading.gif" alt="" /> <?php echo $text_wait; ?></div>');
-		},
-		complete: function() {
-			$('#button-review').attr('disabled', false);
-			$('.attention').remove();
-		},
-		success: function(data) {
-			if (data['error']) {
-				$('#review-title').after('<div class="warning">' + data['error'] + '</div>');
-			}
-			
-			if (data['success']) {
-				$('#review-title').after('<div class="success">' + data['success'] + '</div>');
-								
-				$('input[name=\'name\']').val('');
-				$('textarea[name=\'text\']').val('');
-				$('input[name=\'rating\']:checked').attr('checked', '');
-				$('input[name=\'captcha\']').val('');
-			}
-		}
-	});
-});
-//--></script> 
+        $('#review').fadeIn('slow');
+
+        return false;
+    });
+
+    $('#review').load('index.php?route=product/product/review&product_id=<?php echo $product_id; ?>');
+
+    $('#button-review').bind('click', function() {
+        $.ajax({
+            url: 'index.php?route=product/product/write&product_id=<?php echo $product_id; ?>',
+            type: 'post',
+            dataType: 'json',
+            data: 'name=' + encodeURIComponent($('input[name=\'name\']').val()) + '&text=' + encodeURIComponent($('textarea[name=\'text\']').val()) + '&rating=' + encodeURIComponent($('input[name=\'rating\']:checked').val() ? $('input[name=\'rating\']:checked').val() : '') + '&captcha=' + encodeURIComponent($('input[name=\'captcha\']').val()),
+            beforeSend: function() {
+                $('.success, .warning').remove();
+                $('#button-review').attr('disabled', true);
+                $('#review-title').after('<div class="attention"><img src="catalog/view/theme/default/image/loading.gif" alt="" /> <?php echo $text_wait; ?></div>');
+            },
+            complete: function() {
+                $('#button-review').attr('disabled', false);
+                $('.attention').remove();
+            },
+            success: function(data) {
+                if (data['error']) {
+                    $('#review-title').after('<div class="warning">' + data['error'] + '</div>');
+                }
+
+                if (data['success']) {
+                    $('#review-title').after('<div class="success">' + data['success'] + '</div>');
+
+                    $('input[name=\'name\']').val('');
+                    $('textarea[name=\'text\']').val('');
+                    $('input[name=\'rating\']:checked').attr('checked', '');
+                    $('input[name=\'captcha\']').val('');
+                }
+            }
+        });
+    });
+    //--></script>
 <script type="text/javascript"><!--
-$('#tabs a').tabs();
-//--></script> 
-<script type="text/javascript" src="catalog/view/javascript/jquery/ui/jquery-ui-timepicker-addon.js"></script> 
+    $('#tabs a').tabs();
+    //--></script>
+<script type="text/javascript" src="catalog/view/javascript/jquery/ui/jquery-ui-timepicker-addon.js"></script>
 <script type="text/javascript"><!--
-$(document).ready(function() {
-	if ($.browser.msie && $.browser.version == 6) {
-		$('.date, .datetime, .time').bgIframe();
-	}
+    $(document).ready(function() {
+        if ($.browser.msie && $.browser.version == 6) {
+            $('.date, .datetime, .time').bgIframe();
+        }
 
-	$('.date').datepicker({dateFormat: 'yy-mm-dd'});
-	$('.datetime').datetimepicker({
-		dateFormat: 'yy-mm-dd',
-		timeFormat: 'h:m'
-	});
-	$('.time').timepicker({timeFormat: 'h:m'});
-});
-//--></script> 
+        $('.date').datepicker({dateFormat: 'yy-mm-dd'});
+        $('.datetime').datetimepicker({
+            dateFormat: 'yy-mm-dd',
+            timeFormat: 'h:m'
+        });
+        $('.time').timepicker({timeFormat: 'h:m'});
+    });
+    //--></script>
 <?php echo $footer; ?>
