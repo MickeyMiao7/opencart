@@ -351,6 +351,7 @@
 
 
 
+  <?php { ?>
 
 
   <div class="recommendation">
@@ -377,7 +378,9 @@
 
       <?php foreach ($best_seller_products as $product) { ?>
       <div>
-
+        <?php if (in_array($product['product_id'], $best_seller_products_ids)) { ?>
+        <div class="best-seller"><img src="image/data/bestseller.png" /></div>
+        <?php } ?>
 
         <?php if ($product['thumb']) { ?>
         <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
@@ -395,13 +398,14 @@
         <?php if ($product['rating']) { ?>
         <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
         <?php } ?>
-      <a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a>
-
+        <a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a>
       </div>
-      <?php }
+      <?php } // end of foreach ?>
+    </div><!-- end of .product-recommendation-products -->
+  </div><!-- end of #product-recommendation -->
 
-    </div>
-  </div>
+  <?php } ?>
+
 
 
 
