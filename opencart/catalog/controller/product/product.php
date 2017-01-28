@@ -470,6 +470,8 @@ class ControllerProductProduct extends Controller {
 			// Get recommendation info for the product
 			$categories = $this->model_catalog_product->getCategories($product_id);
             $this->data['best_seller_products_ids'] = array();
+            $this->data['best_seller_products'] = array();
+
             foreach ($categories as $category) {
                 $data = array('filter_category_id' => $category['category_id']);
                 $products = $this->model_catalog_product->getProducts($data);

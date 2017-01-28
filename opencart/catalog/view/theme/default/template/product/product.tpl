@@ -357,13 +357,54 @@
 
   <div class="recommendation">
     <div class="recommendation-title">
-        <h2>You Might Also Like</h2>
-        <?php
-          var_dump($best_seller_products_ids);
-        ?>
+      <h2>You Might Also Like</h2>
+      <?php
+        var_dump($best_seller_products_ids);
+      ?>
     </div>
+  <br>
+
+    <?php if (count($best_seller_products) == 0) { ?>
+      <p>Sorry, No product for recommendation for this product</p>
+    <?php } ?>
+
+    <?php else{ ?>
+      <?php foreach ($best_seller_products as $product) { ?>
+        <?php if ($product['thumb']) { ?>
+          <div class="image">
+            <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a>
+          </div>
+        <?php } ?>
+
+        <div class="name">
+          <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+        </div>
+
+        <?php if ($product['price']) { ?>
+          <div class="price">
+            <?php if (!$product['special']) { ?>
+              <?php echo $product['price']; ?>
+            <?php } else { ?>
+              <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
+            <?php } ?>
+          </div>
+        <?php } ?>
+
+        <?php if ($product['rating']) { ?>
+          <div class="rating">
+            <img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" />
+          </div>
+        <?php } ?>
+        <a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a>
+
+      <?php } ?>
+    <?php } ?>
+
+  </div>
 
 
+
+  <!--
 
   <?php if (count($best_seller_products) == 0) { ?>
   <div class="product-recommendation">
@@ -402,12 +443,12 @@
         <a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a>
       </div>
       <?php } // end of foreach ?>
-    </div><!-- end of .product-recommendation-products -->
-  </div><!-- end of #product-recommendation -->
+    </div>
+  </div>
 
   <?php } ?>
 
-
+-->
 
 
 
