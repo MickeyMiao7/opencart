@@ -478,10 +478,10 @@ class ControllerProductProduct extends Controller {
                 $data = array('filter_category_id' => $category['category_id']);
 //                $products = $this->model_catalog_product->getProducts($data);
                 $best_seller_products_temp = $this->model_catalog_product->getBestSellerProductsByCategory($category['category_id'], 1);
-                foreach ($best_seller_products_temp as $product) {
-                    $this->data['best_seller_product_ids'][] = $product['product_id'];
-                }
-
+//                foreach ($best_seller_products_temp as $product) {
+//                    $this->data['best_seller_product_ids'][] = $product['product_id'];
+//                }
+//
 
 //				foreach ($best_seller_products_temp as $best_seller_product){
 //                    if ($best_seller_product['image']) {
