@@ -364,16 +364,13 @@
     <div class="product-recommendation-products">
       <?php foreach ($best_seller_products as $product) { ?>
       <div>
-        <?php if (in_array($product['product_id'], $best_seller_products_ids)) { ?>
-        <div class="best-seller"><img src="image/data/bestseller.png" /></div>
-        <?php } ?>
 
         <?php if ($product['thumb']) { ?>
-        <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
+        <div class="image" align="center"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
         <?php } ?>
-        <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
+        <div class="name" align="center"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
         <?php if ($product['price']) { ?>
-        <div class="price">
+        <div class="price" align="center">
           <?php if (!$product['special']) { ?>
           <?php echo $product['price']; ?>
           <?php } else { ?>
