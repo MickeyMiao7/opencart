@@ -364,7 +364,7 @@
     <div class="product-recommendation-products">
       <?php foreach ($best_seller_products as $product) { ?>
       <div>
-        <?php if (in_array($product['product_id'], $best_seller_product_ids)) { ?>
+        <?php if (in_array($product['product_id'], $best_seller_products_ids)) { ?>
         <div class="best-seller"><img src="image/data/bestseller.png" /></div>
         <?php } ?>
 
