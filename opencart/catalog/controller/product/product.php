@@ -513,7 +513,8 @@ class ControllerProductProduct extends Controller {
                         'special'     => $special,
                         'tax'         => $tax,
                         'rating'      => $product['rating'],
-                        'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $product['product_id'] . $url)
+//                        'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $product['product_id'] . $url)
+						'href'        => $this->url->link('product/product' . '&product_id=' . $product['product_id'] . $url)
                     );
 
                 }
