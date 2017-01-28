@@ -476,14 +476,19 @@ class ControllerProductProduct extends Controller {
 			$best_seller_products_ids = array();
             foreach ($categories as $category) {
                 $data = array('filter_category_id' => $category['category_id']);
-                $products = $this->model_catalog_product->getProducts($data);
+//                $products = $this->model_catalog_product->getProducts($data);
                 $best_seller_products_temp = $this->model_catalog_product->getBestSellerProductsByCategory($category['category_id'], 1);
-				foreach ($best_seller_products_temp as $best_seller_product){
-                    if ($best_seller_product['image']) {
-                        $image = $this->model_tool_image->resize($best_seller_product['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
-                    } else {
-                        $image = false;
-                    }
+                foreach ($best_seller_products_temp as $product) {
+                    $this->data['best_seller_product_ids'][] = $product['product_id'];
+                }
+
+
+//				foreach ($best_seller_products_temp as $best_seller_product){
+//                    if ($best_seller_product['image']) {
+//                        $image = $this->model_tool_image->resize($best_seller_product['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
+//                    } else {
+//                        $image = false;
+//                    }
 //                    if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
 //                        $price = $this->currency->format($this->tax->calculate($best_seller_product['price'], $best_seller_product['tax_class_id'], $this->config->get('config_tax')));
 //                    } else {
@@ -516,7 +521,7 @@ class ControllerProductProduct extends Controller {
 ////                        'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $best_seller_product['product_id'] . $url)
 //                    );
 
-				}
+//				}
 
 //                $this->data['tmp'] = $best_seller_products;
 
