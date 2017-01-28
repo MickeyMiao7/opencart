@@ -366,11 +366,11 @@
       <div>
 
         <?php if ($product['thumb']) { ?>
-        <div class="image" align="center"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
+        <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
         <?php } ?>
-        <div class="name" align="center"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
+        <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
         <?php if ($product['price']) { ?>
-        <div class="price" align="center">
+        <div class="price">
           <?php if (!$product['special']) { ?>
           <?php echo $product['price']; ?>
           <?php } else { ?>
