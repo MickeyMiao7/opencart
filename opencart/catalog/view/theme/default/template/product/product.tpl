@@ -346,17 +346,6 @@
 
 
 
-  <div class="box">
-    <div class="box-heading">You Might Also Like ...</div>
-    <div class="box-product">
-      <div>
-        <div class="image"></div>
-        <div class="name"></div>
-        <div class="price"></div>
-      </div>
-    </div>
-  </div>
-
 
 
   <div class="box">
@@ -382,6 +371,11 @@
             <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
             <?php } ?>
           </div>
+
+          <?php if ($product['rating']) { ?>
+          <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
+          <?php } ?>
+
 
         </div>
 
