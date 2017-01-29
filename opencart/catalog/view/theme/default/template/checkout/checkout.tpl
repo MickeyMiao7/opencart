@@ -36,6 +36,19 @@
       <div class="checkout-heading"><?php echo $text_checkout_payment_method; ?></div>
       <div class="checkout-content"></div>
     </div>
+
+
+
+
+    <div id="referrer">
+      <div class="checkout-heading"><?php echo $text_checkout_referrer; ?></div>
+      <div class="checkout-content"></div>
+    </div>
+
+
+
+
+
     <div id="confirm">
       <div class="checkout-heading"><?php echo $text_checkout_confirm; ?></div>
       <div class="checkout-content"></div>
@@ -943,7 +956,7 @@ $('#button-payment-method').live('click', function() {
 
 
 
-    $('#button-referrer').live('click', function() {
+$('#button-referrer').live('click', function() {
         $.ajax({
             url: 'index.php?route=checkout/referrer/validate',
             type: 'post',
