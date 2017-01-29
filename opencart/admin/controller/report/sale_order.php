@@ -168,6 +168,15 @@ class ControllerReportSaleOrder extends Controller {
 		$this->data['entry_group'] = $this->language->get('entry_group');	
 		$this->data['entry_status'] = $this->language->get('entry_status');
 
+
+
+		
+        $this->data['entry_customer'] = $this->language->get('entry_customer');
+
+
+
+
+
 		$this->data['button_filter'] = $this->language->get('button_filter');
 		
 		$this->data['token'] = $this->session->data['token'];
