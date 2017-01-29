@@ -385,7 +385,7 @@
     </div>
   </div>
 
-
+<!--
 
   <?php if (count($best_seller_products) == 0) { ?>
   <div class="product-recommendation">
@@ -422,13 +422,13 @@
         <a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a>
       </div>
       <?php } // end of foreach ?>
-    </div><!-- end of .product-recommendation-products -->
-  </div><!-- end of #product-recommendation -->
+    </div>
+  </div>
 
   <?php } ?>
 
 
-
+-->
 
 
 

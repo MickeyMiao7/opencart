@@ -8,7 +8,20 @@ class ModelReportSale extends Model {
 		} else {
 			$sql .= " WHERE o.order_status_id > '0'";
 		}
-		
+
+
+
+
+
+        if (!empty($data['filter_customer_name'])) {
+            $sql .= " AND CONCAT(o.firstname, ' ', o.lastname) LIKE '%" . $this->db->escape($data['filter_customer_name']) . "%'";
+        }
+
+
+
+
+
+
 		if (!empty($data['filter_date_start'])) {
 			$sql .= " AND DATE(o.date_added) >= '" . $this->db->escape($data['filter_date_start']) . "'";
 		}
@@ -88,7 +101,21 @@ class ModelReportSale extends Model {
 		} else {
 			$sql .= " WHERE order_status_id > '0'";
 		}
-				
+
+
+
+
+
+
+
+        if (!empty($data['filter_customer_name'])) {
+            $sql .= " AND CONCAT(o.firstname, ' ', o.lastname) LIKE '%" . $this->db->escape($data['filter_customer_name']) . "%'";
+        }
+
+
+
+
+
 		if (!empty($data['filter_date_start'])) {
 			$sql .= " AND DATE(date_added) >= '" . $this->db->escape($data['filter_date_start']) . "'";
 		}
