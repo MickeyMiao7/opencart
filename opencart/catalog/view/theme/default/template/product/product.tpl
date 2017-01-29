@@ -347,14 +347,15 @@
 
 
   <div class="box">
-    <div class="box-heading"></div>
+    <div class="box-heading">You Might Also Like ...</div>
     <div class="box-product">
       <div>
         <div class="image"></div>
         <div class="name"></div>
         <div class="price"></div>
       </div>
-      ﻿﻿
+    </div>
+  </div>
 
 
 
