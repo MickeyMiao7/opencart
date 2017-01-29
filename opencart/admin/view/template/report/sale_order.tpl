@@ -117,7 +117,21 @@ function filter() {
 	
 	if (filter_order_status_id != 0) {
 		url += '&filter_order_status_id=' + encodeURIComponent(filter_order_status_id);
-	}	
+	}
+
+
+
+
+	
+    var filter_customer_name = $('input[name="filter_customer_name"]').val();
+    if (filter_customer_name)
+        url += '&filter_customer_name=' + encodeURIComponent(filter_customer_name);
+
+
+
+
+
+
 
 	location = url;
 }
