@@ -361,23 +361,34 @@
 
   <div class="box">
     <div class="box-heading">You Might Also Like ...</div>
+    <div class="box-content">
+      <div class="box-product">
 
-    <?php foreach ($best_seller_products as $product) { ?>
-    <div class="box-product">
-      <div>
+      <?php foreach ($best_seller_products as $product) { ?>
 
-
-        <?php if ($product['thumb']) { ?>
-          <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
-        <?php } ?>
+        <div>
 
 
+          <?php if ($product['thumb']) { ?>
+            <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
+          <?php } ?>
+
+          <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
+
+          <div class="price">
+            <?php if (!$product['special']) { ?>
+            <?php echo $product['price']; ?>
+            <?php } else { ?>
+            <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
+            <?php } ?>
+          </div>
+
+        </div>
+
+      <?php } ?>
       </div>
     </div>
-    <?php } ?>
-
   </div>
-
 
 
 
