@@ -1,8 +1,6 @@
 <div>
   <p><?php echo $text_referrer; ?>
-    <!--<span style="margin-left: 20px">-->
-			<input type="text" value="<?php echo $referrer_id ?>">
-		<!--</span>-->
+    <input type="text" value="<?php echo $referrer_id ?>">
   </p>
 </div>
 

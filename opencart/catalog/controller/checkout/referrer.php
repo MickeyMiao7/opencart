@@ -38,7 +38,7 @@ class ControllerCheckoutReferrer extends Controller {
                         } else {
                             if ($this->customer->isLogged() &&
                                 $this->customer->getId() == $referrer_id) {
-                                $json['error']['warning'] = $this->language->get('error_referrer') . ' Cannot provide your own id.';
+                                $json['error']['warning'] = $this->language->get('error_referrer') . ' Cannot be your own id.';
                             } else {
                                 $this->session->data['referrer_id'] = (int) $referrer_id;
                             }
