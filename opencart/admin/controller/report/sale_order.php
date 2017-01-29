@@ -170,7 +170,7 @@ class ControllerReportSaleOrder extends Controller {
 
 
 
-		
+
         $this->data['entry_customer'] = $this->language->get('entry_customer');
 
 
