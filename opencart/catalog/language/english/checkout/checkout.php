@@ -10,7 +10,14 @@ $_['text_checkout_payment_address']  = 'Step 2: Billing Details';
 $_['text_checkout_shipping_address'] = 'Step 3: Delivery Details';
 $_['text_checkout_shipping_method']  = 'Step 4: Delivery Method';
 $_['text_checkout_payment_method']   = 'Step 5: Payment Method';
-$_['text_checkout_confirm']          = 'Step 6: Confirm Order';
+
+$_['text_checkout_referrer']         = 'Step 6: Referrer';
+
+
+$_['text_checkout_confirm']          = 'Step 7: Confirm Order';
+
+
+
 $_['text_modify']                    = 'Modify &raquo;';
 $_['text_new_customer']              = 'New Customer';
 $_['text_returning_customer']        = 'Returning Customer';
@@ -29,7 +36,11 @@ $_['text_address_existing']          = 'I want to use an existing address';
 $_['text_shipping_method']           = 'Please select the preferred shipping method to use on this order.';
 $_['text_payment_method']            = 'Please select the preferred payment method to use on this order.';
 $_['text_comments']                  = 'Add Comments About Your Order';
+
+
+
 $_['text_referrer']                  = 'Please enter the id of your referrer (Optional):';
+
 
 
 $_['text_recurring_item']            = 'Recurring item';
