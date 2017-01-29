@@ -14,7 +14,7 @@ class ModelReportSale extends Model {
 
 
         if (!empty($data['filter_customer_name'])) {
-            $sql .= " AND CONCAT(o.firstname, ' ', o.lastname) LIKE '%" . $this->db->escape($data['filter_customer_name']) . "%'";
+            $sql .= " AND CONCAT(firstname, ' ', lastname) LIKE '%" . $this->db->escape($data['filter_customer_name']) . "%'";
         }
 
 
@@ -109,7 +109,7 @@ class ModelReportSale extends Model {
 
 
         if (!empty($data['filter_customer_name'])) {
-            $sql .= " AND CONCAT(o.firstname, ' ', o.lastname) LIKE '%" . $this->db->escape($data['filter_customer_name']) . "%'";
+            $sql .= " AND CONCAT(firstname, ' ', lastname) LIKE '%" . $this->db->escape($data['filter_customer_name']) . "%'";
         }
 
 
