@@ -41,10 +41,6 @@
       <div class="checkout-content"></div>
     </div>
 
-    <div id="referrer">
-      <div class="checkout-heading"><?php echo $text_checkout_referrer; ?></div>
-      <div class="checkout-content"></div>
-    </div>
 
   </div>
   <?php echo $content_bottom; ?></div>
@@ -940,6 +936,75 @@ $('#button-payment-method').live('click', function() {
 		}
 	});	
 });
+
+
+
+
+
+
+
+    $('#button-referrer').live('click', function() {
+        $.ajax({
+            url: 'index.php?route=checkout/referrer/validate',
+            type: 'post',
+            data: {
+                referrer_id: $('#referrer input').val(),
+            },
+            dataType: 'json',
+            beforeSend: function() {
+                $('#button-referrer').attr('disabled', true);
+                $('#button-referrer').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
+            },
+            complete: function() {
+                $('#button-referrer').attr('disabled', false);
+                $('.wait').remove();
+            },
+            success: function(json) {
+                $('.warning, .error').remove();
+                if (json['error']) {
+                    if (json['error']['warning']) {
+                        $('#referrer .checkout-content').prepend('<div class="warning" style="display: none;">' + json['error']['warning'] + '<img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>');
+                        $('.warning').fadeIn('slow');
+                    }
+                } else {
+                    $.ajax({
+                        url: 'index.php?route=checkout/confirm',
+                        dataType: 'html',
+                        success: function(html) {
+                            $('#confirm .checkout-content').html(html);
+                            $('#referrer .checkout-content').slideUp('slow');
+                            $('#confirm .checkout-content').slideDown('slow');
+                            $('#referrer .checkout-heading a').remove();
+                            $('#referrer .checkout-heading').append('<a><?php echo $text_modify; ?></a>');
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    });
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function quickConfirm(module){
 	$.ajax({
