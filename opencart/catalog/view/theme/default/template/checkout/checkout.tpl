@@ -40,6 +40,12 @@
       <div class="checkout-heading"><?php echo $text_checkout_confirm; ?></div>
       <div class="checkout-content"></div>
     </div>
+
+    <div id="referrer">
+      <div class="checkout-heading"><?php echo $text_checkout_referrer; ?></div>
+      <div class="checkout-content"></div>
+    </div>
+
   </div>
   <?php echo $content_bottom; ?></div>
 <script type="text/javascript"><!--
