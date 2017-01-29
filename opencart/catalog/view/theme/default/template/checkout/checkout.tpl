@@ -925,14 +925,14 @@ $('#button-payment-method').live('click', function() {
 				}			
 			} else {
 				$.ajax({
-					url: 'index.php?route=checkout/confirm',
+                    url: 'index.php?route=checkout/referrer',
 					dataType: 'html',
 					success: function(html) {
-						$('#confirm .checkout-content').html(html);
+                        $('#referrer .checkout-content').html(html);
 						
 						$('#payment-method .checkout-content').slideUp('slow');
-						
-						$('#confirm .checkout-content').slideDown('slow');
+
+                        $('#referrer .checkout-content').slideDown('slow');
 						
 						$('#payment-method .checkout-heading a').remove();
 						

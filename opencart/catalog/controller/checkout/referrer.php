@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mickey
- * Date: 2017/1/29
- * Time: 下午8:53
- */
-
 class ControllerCheckoutReferrer extends Controller {
     public function index() {
         $this->language->load('checkout/checkout');
@@ -23,7 +16,7 @@ class ControllerCheckoutReferrer extends Controller {
         }
         $this->response->setOutput($this->render());
     }
-    
+
     public function validate() {
         $this->language->load('checkout/checkout');
         $this->session->data['referrer_id'] = 0;

@@ -109,6 +109,16 @@ $_['error_no_shipping']              = 'Warning: No Shipping options are availab
 $_['error_payment']                  = 'Warning: Payment method required!';
 $_['error_no_payment']               = 'Warning: No Payment options are available. Please <a href="%s">contact us</a> for assistance!';
 
+
+
+
+$_['error_referrer']                  = 'Please provide a valid referrer id.';
+
+
+
+
+
+
 $_['text_trial']                    = '%s every %s %s for %s payments then ';
 $_['text_recurring']                = '%s every %s %s';
 $_['text_length']                   = ' for %s payments';
