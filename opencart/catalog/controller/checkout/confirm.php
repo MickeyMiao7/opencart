@@ -165,7 +165,20 @@ class ControllerCheckoutConfirm extends Controller {
 			} else {
 				$data['payment_code'] = '';
 			}
-						
+
+
+
+
+
+
+            if (isset($this->session->data['referrer_id']))
+                $data['referrer_id'] = $this->session->data['referrer_id'];
+
+
+
+
+
+
 			if ($this->cart->hasShipping()) {
 				if ($this->customer->isLogged()) {
 					$this->load->model('account/address');
