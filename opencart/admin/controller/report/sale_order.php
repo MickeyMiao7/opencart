@@ -139,7 +139,22 @@ class ControllerReportSaleOrder extends Controller {
 		$order_total = $this->model_report_sale->getTotalOrders($data);
 		
 		$results = $this->model_report_sale->getOrders($data);
-		
+
+
+
+
+
+
+        // CSV
+        if (isset($this->request->get['export'])) {
+            export_to_csv($results, 'sale_order');
+        }
+
+
+
+
+
+
 		foreach ($results as $result) {
 			$this->data['orders'][] = array(
 				'date_start' => date($this->language->get('date_format_short'), strtotime($result['date_start'])),
@@ -178,6 +193,16 @@ class ControllerReportSaleOrder extends Controller {
 
 
 		$this->data['button_filter'] = $this->language->get('button_filter');
+
+
+
+		// Button of Export CSV
+        $this->data['button_export'] = $this->language->get('button_export');
+
+
+
+
+
 		
 		$this->data['token'] = $this->session->data['token'];
 		

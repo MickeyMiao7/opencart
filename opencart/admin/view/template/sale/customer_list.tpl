@@ -121,7 +121,7 @@
 
                   <a onclick="getBestCustomer();" class="button"><?php echo $button_filter_best_customer; ?></a>
                   <a onclick="getBestReferrer();" class="button"><?php echo $button_filter_best_referrer; ?></a>
-                  
+
 
 
 

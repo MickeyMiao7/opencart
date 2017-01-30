@@ -31,5 +31,10 @@ $_['entry_customer']    = 'Customer Name:';
 
 
 
+// Button
+$_['button_export']   = 'Export CSV';
+
+
+
 
 ?>
