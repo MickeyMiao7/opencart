@@ -84,15 +84,6 @@ class ControllerAccountOrder extends Controller {
 		$this->data['text_empty'] = $this->language->get('text_empty');
 
 
-
-
-        $this->data['text_referrer_info'] = $this->language->get('text_referrer_info');
-        $this->data['text_referrer_name'] = $this->language->get('text_referrer_name');
-        $this->data['text_referrer_id'] = $this->language->get('text_referrer_id');
-
-
-
-
 		$this->data['button_view'] = $this->language->get('button_view');
 		$this->data['button_reorder'] = $this->language->get('button_reorder');
 		$this->data['button_continue'] = $this->language->get('button_continue');
@@ -221,7 +212,19 @@ class ControllerAccountOrder extends Controller {
       		$this->data['text_history'] = $this->language->get('text_history');
 			$this->data['text_comment'] = $this->language->get('text_comment');
 
-      		$this->data['column_name'] = $this->language->get('column_name');
+
+
+            $this->data['text_referrer_info'] = $this->language->get('text_referrer_info');
+            $this->data['text_referrer_name'] = $this->language->get('text_referrer_name');
+            $this->data['text_referrer_id'] = $this->language->get('text_referrer_id');
+
+
+
+
+
+
+
+            $this->data['column_name'] = $this->language->get('column_name');
       		$this->data['column_model'] = $this->language->get('column_model');
       		$this->data['column_quantity'] = $this->language->get('column_quantity');
       		$this->data['column_price'] = $this->language->get('column_price');
