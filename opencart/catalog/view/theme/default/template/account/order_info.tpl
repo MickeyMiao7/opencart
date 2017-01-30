@@ -73,6 +73,11 @@
       </td>
       <?php } ?>
 
+      <?php else { ?>
+        <?php echo $text_no_referrer; ?>
+      <?php } ?>
+
+
     </tr>
     </tbody>
   </table>
