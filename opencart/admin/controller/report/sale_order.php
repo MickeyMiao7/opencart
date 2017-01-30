@@ -1,6 +1,8 @@
 <?php
 class ControllerReportSaleOrder extends Controller { 
-	public function index() {  
+	public function index() {
+
+
 		$this->language->load('report/sale_order');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -29,7 +31,12 @@ class ControllerReportSaleOrder extends Controller {
 			$filter_order_status_id = 0;
 		}
 
+        require_once(DIR_SYSTEM . 'library/excel_xml.php');
+        $xls = new Excel_XML('UTF-8', false, 'Sales Orders Report');
 
+        $xls->addArray();
+
+        $xls->generateXML('sales_orders_report_'.date('Y-m-d _ H:i:s'));
 
 
 
@@ -202,11 +209,17 @@ class ControllerReportSaleOrder extends Controller {
 
 
 
-
 		
 		$this->data['token'] = $this->session->data['token'];
-		
-		$this->load->model('localisation/order_status');
+
+
+
+        $this->data['export'] = $this->url->link('report/sale_order/export', 'token=' . $this->session->data['token'], 'SSL');
+
+
+
+
+        $this->load->model('localisation/order_status');
 		
 		$this->data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
 
