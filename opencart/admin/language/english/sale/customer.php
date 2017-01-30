@@ -27,6 +27,21 @@ $_['column_ip']             = 'IP';
 $_['column_total']          = 'Total Accounts';
 $_['column_action']         = 'Action';
 
+
+
+
+
+// Button
+$_['button_filter_best_customer'] = 'Best Customer';
+$_['button_filter_best_referrer'] = 'Best Referrer';
+
+
+
+
+
+
+
+
 // Entry
 $_['entry_firstname']       = 'First Name:';
 $_['entry_lastname']        = 'Last Name:';

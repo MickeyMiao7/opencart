@@ -105,7 +105,26 @@
               <td><input type="text" name="filter_ip" value="<?php echo $filter_ip; ?>" /></td>
               <td><input type="text" name="filter_date_added" value="<?php echo $filter_date_added; ?>" size="12" id="date" /></td>
               <td></td>
-              <td align="right"><a onclick="filter();" class="button"><?php echo $button_filter; ?></a></td>
+
+
+
+
+
+
+
+
+              <td align="right">
+                  <a onclick="getBestCustomer();" class="button"><?php echo $button_filter_best_customer; ?></a>
+                  <a onclick="getBestReferrer();" class="button"><?php echo $button_filter_best_referrer; ?></a>
+
+
+
+
+
+
+
+                  <a onclick="filter();" class="button"><?php echo $button_filter; ?></a>
+              </td>
             </tr>
             <?php if ($customers) { ?>
             <?php foreach ($customers as $customer) { ?>
@@ -146,6 +165,33 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+    function getBestCustomer () {
+        location = 'index.php?route=sale/customer&token=<?php echo $token; ?>&best_customer';
+    }
+    function getBestReferrer () {
+        location = 'index.php?route=sale/customer&token=<?php echo $token; ?>&best_referrer';
+    }
+ //--></script>
+
+
+
+
+
+
+
+
+
 <script type="text/javascript"><!--
 function filter() {
 	url = 'index.php?route=sale/customer&token=<?php echo $token; ?>';

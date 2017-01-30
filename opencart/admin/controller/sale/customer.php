@@ -404,8 +404,43 @@ class ControllerSaleCustomer extends Controller {
 		);
 		
 		$customer_total = $this->model_sale_customer->getTotalCustomers($data);
-	
-		$results = $this->model_sale_customer->getCustomers($data);
+
+
+
+
+
+
+
+
+
+
+        if (isset($this->request->get['best_customer'])) {
+            $best_customer_id = $this->model_sale_customer->getBestCustomerId();
+            $results = $this->model_sale_customer->getCustomerById($best_customer_id);
+        } else if (isset($this->request->get['best_referrer'])) {
+            $best_referrer_id = $this->model_sale_customer->getBestReferrerId();
+            $results = $this->model_sale_customer->getCustomerById($best_referrer_id);
+        } else {
+            $results = $this->model_sale_customer->getCustomers($data);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // $results = $this->model_sale_customer->getCustomers($data);
  
     	foreach ($results as $result) {
 			$action = array();
@@ -453,6 +488,24 @@ class ControllerSaleCustomer extends Controller {
 		$this->data['button_insert'] = $this->language->get('button_insert');
 		$this->data['button_delete'] = $this->language->get('button_delete');
 		$this->data['button_filter'] = $this->language->get('button_filter');
+
+
+
+
+
+
+
+
+        $this->data['button_filter_best_customer'] = $this->language->get('button_filter_best_customer');
+        $this->data['button_filter_best_referrer'] = $this->language->get('button_filter_best_referrer');
+
+
+
+
+
+
+
+
 
 		$this->data['token'] = $this->session->data['token'];
 

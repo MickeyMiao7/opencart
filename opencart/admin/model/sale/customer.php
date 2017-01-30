@@ -1,5 +1,39 @@
 <?php
 class ModelSaleCustomer extends Model {
+
+
+
+
+    public function getBestCustomerId() {
+        $query = $this->db->query("SELECT *, SUM(total) as sum from " . DB_PREFIX . "order GROUP BY customer_id ORDER BY sum DESC LIMIT 1");
+        return $query->row['customer_id'];
+    }
+
+
+
+
+    public function getBestReferrerId() {
+        $query = $this->db->query("SELECT *, SUM(total) as sum FROM (SELECT * FROM " . DB_PREFIX . "order WHERE referrer_id IS NOT NULL AND referrer_id != 0) as t GROUP BY referrer_id ORDER BY sum DESC LIMIT 1");
+        return $query->row['referrer_id'];
+    }
+
+
+
+
+    public function getCustomerById($customer_id) {
+        $query = $this->db->query("SELECT *, CONCAT(c.firstname, ' ', c.lastname) AS name, cgd.name AS customer_group FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "customer_group_description cgd ON (c.customer_group_id = cgd.customer_group_id) WHERE c.customer_id = " . (int)$customer_id . " AND cgd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+        return $query->rows;
+    }
+
+
+
+
+
+
+
+
+
+
 	public function addCustomer($data) {
       	$this->db->query("INSERT INTO " . DB_PREFIX . "customer SET firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', fax = '" . $this->db->escape($data['fax']) . "', newsletter = '" . (int)$data['newsletter'] . "', customer_group_id = '" . (int)$data['customer_group_id'] . "', salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "', status = '" . (int)$data['status'] . "', date_added = NOW()");
       	
