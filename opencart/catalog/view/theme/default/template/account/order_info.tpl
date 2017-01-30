@@ -50,24 +50,6 @@
 
 
 
-  <table class="list">
-    <thead>
-    <tr>
-      <td class="left" colspan="2"><?php echo $text_referrer_info; ?></td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td class="left" style="width: 50%;">
-        <b><?php echo $text_referrer_id; ?></b> <?php echo $referrer_id; ?><br />
-
-      </td>
-      <td class="left" style="width: 50%;">
-        <b><?php echo $text_referrer_name; ?></b> <?php echo $referrer_name; ?><br />
-    </tr>
-    </tbody>
-  </table>
-
 
 
 
