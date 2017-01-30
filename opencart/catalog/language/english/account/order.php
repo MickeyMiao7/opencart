@@ -39,7 +39,8 @@ $_['text_referrer_name']    = 'Name:';
 $_['text_referrer_id']      = 'ID:';
 
 
-$_['text_referrer']    = 'Referrer';
+$_['text_no_referrer']    = 'There is no referer for this order';
+
 
 
 // Column
