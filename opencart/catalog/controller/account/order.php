@@ -214,9 +214,11 @@ class ControllerAccountOrder extends Controller {
 
 
 
-            $this->data['text_referrer_info'] = $this->language->get('text_referrer_info');
-            $this->data['text_referrer_name'] = $this->language->get('text_referrer_name');
-            $this->data['text_referrer_id'] = $this->language->get('text_referrer_id');
+            $this->data['text_referrer'] = $this->language->get('text_referrer');
+
+//            $this->data['text_referrer_info'] = $this->language->get('text_referrer_info');
+//            $this->data['text_referrer_name'] = $this->language->get('text_referrer_name');
+//            $this->data['text_referrer_id'] = $this->language->get('text_referrer_id');
 
 
 
@@ -252,13 +254,13 @@ class ControllerAccountOrder extends Controller {
 
 			// Get Referrer Info
 
+            $this->data['referrer_name'] = $this->model_account_order->getCustomerName($order_info['referrer_id']);
+//            $this->data['referrer_id'] = $order_info['referrer_id'];
+//            $this->data['referrer_name'] = '';
 
-            $this->data['referrer_id'] = $order_info['referrer_id'];
-            $this->data['referrer_name'] = '';
-
-            if (data['referrer_id']){
+//            if (data['referrer_id']){
                 $this->data['referrer_name'] = $this->model_account_order->getCustomerName($order_info['referrer_id']);
-            }
+//            }
 
 
 

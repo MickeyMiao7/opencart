@@ -9,7 +9,7 @@ $_['text_order']            = 'Order Information';
 
 
 
-$_['text_referrer_info']    = 'Referrer Info';
+
 
 
 
@@ -34,10 +34,12 @@ $_['text_error']            = 'The order you requested could not be found!';
 
 
 
-
+$_['text_referrer_info']    = 'Referrer Info';
 $_['text_referrer_name']    = 'Name:';
 $_['text_referrer_id']      = 'ID:';
 
+
+$_['text_referrer']    = 'Referrer';
 
 
 // Column

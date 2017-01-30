@@ -18,6 +18,11 @@
           <b><?php echo $text_invoice_no; ?></b> <?php echo $invoice_no; ?><br />
           <?php } ?>
           <b><?php echo $text_order_id; ?></b> #<?php echo $order_id; ?><br />
+
+          <b><?php echo $text_referrer; ?></b> <?php echo $referrer; ?><br />
+
+
+
           </td>
         <td class="left" style="width: 50%;"><?php if ($payment_method) { ?>
           <b><?php echo $text_payment_method; ?></b> <?php echo $payment_method; ?><br />
@@ -48,7 +53,7 @@
   </table>
 
 
-
+<!--
 
   <table class="list">
     <thead>
@@ -70,7 +75,7 @@
 
 
 
-
+-->
 
 
 
