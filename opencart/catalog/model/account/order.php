@@ -1,5 +1,21 @@
 <?php
 class ModelAccountOrder extends Model {
+
+
+    public function getCustomerName($customer_id) {
+        if (is_numeric($customer_id)) {
+            $query = $this->db->query("SELECT * FROM  " . DB_PREFIX . "customer WHERE customer_id = " . (int)$customer_id);
+            $row = $query->row;
+            return $row["firstname"] . " " . $row["lastname"];
+        } else {
+            return "";
+        }
+    }
+
+
+
+
+
 	public function getOrder($order_id) {
 		$order_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order` WHERE order_id = '" . (int)$order_id . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND order_status_id > '0'");
 	
@@ -168,21 +184,6 @@ class ModelAccountOrder extends Model {
 		
 		return $query->row['total'];
 	}
-
-
-
-
-
-    public function getCustomerName($customer_id) {
-        if (is_numeric($customer_id)) {
-            $query = $this->db->query("SELECT * FROM  " . DB_PREFIX . "customer WHERE customer_id = " . (int)$customer_id);
-            $row = $query->row;
-            return $row["firstname"] . " " . $row["lastname"];
-        } else {
-            return "";
-        }
-    }
-
 
 
 
