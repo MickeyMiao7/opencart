@@ -75,7 +75,7 @@
 
       <?php else { ?>
       <td class="left" style="width: 100%;">
-        <?php echo $text_no_referrer ?> <br />
+        <?php echo $text_no_referrer; ?> <br />
       </td>
       <?php } ?>
 
