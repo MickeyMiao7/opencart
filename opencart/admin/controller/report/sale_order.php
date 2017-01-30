@@ -1,5 +1,49 @@
 <?php
-class ControllerReportSaleOrder extends Controller { 
+class ControllerReportSaleOrder extends Controller {
+    public function export() {
+        $this->load->model('report/sale');
+
+        $this->data['orders'] = array();
+
+        $data = array();
+
+        $orders= array();
+
+        $results = $this->model_report_sale->getOrders($data);
+
+        foreach ($results as $result) {
+            $orders[] = array(
+                'date_start' => date($this->language->get('date_format_short'), strtotime($result['date_start'])),
+                'date_end'   => date($this->language->get('date_format_short'), strtotime($result['date_end'])),
+                'orders'     => $result['orders'],
+                'products'   => $result['products'],
+                'tax'        => $this->currency->format($result['tax'], $this->config->get('config_currency')),
+                'total'      => $this->currency->format($result['total'], $this->config->get('config_currency'))
+            );
+        }
+
+        $orders_data = array();
+
+        $orders_column=array();
+
+        $orders_column = array('Start Date', 'End Date', 'No Of Orders', 'No Of Products', 'Tax', 'Total');
+
+        $orders_data[0]=   $orders_column;
+
+        foreach($orders as $orders_row)
+        {
+            $orders_data[]=   $orders_row;
+        }
+        require_once(DIR_SYSTEM . 'library/excel_xml.php');
+        $xls = new Excel_XML('UTF-8', false, 'Sales Orders Report');
+
+        $xls->addArray($orders_data);
+
+        $xls->generateXML('sales_orders_report_'.date('Y-m-d _ H:i:s'));
+
+    }
+
+
 	public function index() {
 
 
@@ -30,15 +74,6 @@ class ControllerReportSaleOrder extends Controller {
 		} else {
 			$filter_order_status_id = 0;
 		}
-
-        require_once(DIR_SYSTEM . 'library/excel_xml.php');
-        $xls = new Excel_XML('UTF-8', false, 'Sales Orders Report');
-
-        $xls->addArray();
-
-        $xls->generateXML('sales_orders_report_'.date('Y-m-d _ H:i:s'));
-
-
 
 
 
@@ -153,9 +188,9 @@ class ControllerReportSaleOrder extends Controller {
 
 
         // CSV
-        if (isset($this->request->get['export'])) {
-            export_to_csv($results, 'sale_order');
-        }
+//        if (isset($this->request->get['export'])) {
+//            export_to_csv($results, 'sale_order');
+//        }
 
 
 
