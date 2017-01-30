@@ -73,7 +73,7 @@
       </td>
       <?php } else { ?>
         <?php echo "11";>
-      <?php } { ?>
+      <?php } ?>
 <!--
       <?php else { ?>
       <td class="left" style="width: 100%;">
