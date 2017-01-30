@@ -1,7 +1,5 @@
 <?php
 class ModelAccountOrder extends Model {
-
-
     public function getCustomerName($customer_id) {
         if (is_numeric($customer_id)) {
             $query = $this->db->query("SELECT * FROM  " . DB_PREFIX . "customer WHERE customer_id = " . (int)$customer_id);
@@ -110,7 +108,8 @@ class ModelAccountOrder extends Model {
 				'currency_value'          => $order_query->row['currency_value'],
 				'date_modified'           => $order_query->row['date_modified'],
 				'date_added'              => $order_query->row['date_added'],
-				'ip'                      => $order_query->row['ip']
+				'ip'                      => $order_query->row['ip'],
+                'referrer_id'             => $order_query->row['referrer_id']
 			);
 		} else {
 			return false;	

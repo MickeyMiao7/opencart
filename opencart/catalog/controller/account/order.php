@@ -91,7 +91,7 @@ class ControllerAccountOrder extends Controller {
         $this->data['text_referrer_id'] = $this->language->get('text_referrer_id');
 
 
-        
+
 
 		$this->data['button_view'] = $this->language->get('button_view');
 		$this->data['button_reorder'] = $this->language->get('button_reorder');
