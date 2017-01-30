@@ -19,7 +19,6 @@
           <?php } ?>
           <b><?php echo $text_order_id; ?></b> #<?php echo $order_id; ?><br />
 
-          <b><?php echo $text_referrer; ?></b> <?php echo $referrer; ?><br />
 
 
 
@@ -53,7 +52,7 @@
   </table>
 
 
-<!--
+
 
   <table class="list">
     <thead>
@@ -75,7 +74,6 @@
 
 
 
--->
 
 
 
