@@ -72,7 +72,7 @@
         <b><?php echo $text_referrer_name; ?></b> <?php echo $referrer_name; ?><br />
       </td>
       <?php } else { ?>
-        <?php echo "11";>
+        <?php echo "11"; ?>
       <?php } ?>
 <!--
       <?php else { ?>
