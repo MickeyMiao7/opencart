@@ -60,14 +60,25 @@
       <td class="left" colspan="2"><?php echo $text_referrer_info; ?></td>
     </tr>
     </thead>
+
     <tbody>
     <tr>
+      <?php if ($referrer_id){ ?>
       <td class="left" style="width: 50%;">
         <b><?php echo $text_referrer_id; ?></b> <?php echo $referrer_id; ?><br />
 
       </td>
       <td class="left" style="width: 50%;">
         <b><?php echo $text_referrer_name; ?></b> <?php echo $referrer_name; ?><br />
+      </td>
+      <?php } ?>
+      <?php else { ?>
+      <td class="left" style="width: 100%;">
+        No Referrer<br />
+      </td>
+      <?php } ?>
+
+
     </tr>
     </tbody>
   </table>
