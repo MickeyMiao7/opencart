@@ -215,8 +215,6 @@ class ControllerAccountOrder extends Controller {
 
 
             $this->data['text_no_referrer'] = $this->language->get('text_no_referrer');
-
-
             $this->data['text_referrer_info'] = $this->language->get('text_referrer_info');
             $this->data['text_referrer_name'] = $this->language->get('text_referrer_name');
             $this->data['text_referrer_id'] = $this->language->get('text_referrer_id');
