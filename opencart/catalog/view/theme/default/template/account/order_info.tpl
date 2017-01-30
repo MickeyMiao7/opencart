@@ -72,13 +72,6 @@
         <b><?php echo $text_referrer_name; ?></b> <?php echo $referrer_name; ?><br />
       </td>
       <?php } ?>
-<!--
-      <?php else { ?>
-      <td class="left" style="width: 100%;">
-        <?php echo $text_no_referrer; ?> <br />
-      </td>
-      <?php } ?>
--->
 
     </tr>
     </tbody>
