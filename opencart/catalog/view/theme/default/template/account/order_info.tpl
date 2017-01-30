@@ -71,9 +71,9 @@
       <td class="left" style="width: 50%;">
         <b><?php echo $text_referrer_name; ?></b> <?php echo $referrer_name; ?><br />
       </td>
-      <?php } ?>
+      <?php } else { ?>
 
-      <?php else { ?>
+      
         <?php echo $text_no_referrer; ?>
       <?php } ?>
 
