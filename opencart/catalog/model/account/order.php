@@ -167,7 +167,24 @@ class ModelAccountOrder extends Model {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order_voucher` WHERE order_id = '" . (int)$order_id . "'");
 		
 		return $query->row['total'];
-	}	
-	
+	}
+
+
+
+
+
+    public function getCustomerName($customer_id) {
+        if (is_numeric($customer_id)) {
+            $query = $this->db->query("SELECT * FROM  " . DB_PREFIX . "customer WHERE customer_id = " . (int)$customer_id);
+            $row = $query->row;
+            return $row["firstname"] . " " . $row["lastname"];
+        } else {
+            return "";
+        }
+    }
+
+
+
+
 }
 ?>

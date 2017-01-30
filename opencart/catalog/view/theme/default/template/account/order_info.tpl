@@ -18,7 +18,7 @@
           <b><?php echo $text_invoice_no; ?></b> <?php echo $invoice_no; ?><br />
           <?php } ?>
           <b><?php echo $text_order_id; ?></b> #<?php echo $order_id; ?><br />
-          <b><?php echo $text_date_added; ?></b> <?php echo $date_added; ?></td>
+          </td>
         <td class="left" style="width: 50%;"><?php if ($payment_method) { ?>
           <b><?php echo $text_payment_method; ?></b> <?php echo $payment_method; ?><br />
           <?php } ?>
@@ -46,6 +46,36 @@
       </tr>
     </tbody>
   </table>
+
+
+
+
+  <table class="list">
+    <thead>
+    <tr>
+      <td class="left" colspan="2"><?php echo $text_referrer_info; ?></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="left" style="width: 50%;">
+        <b><?php echo $text_referrer_id; ?></b> <?php echo $referrer_id; ?><br />
+
+      </td>
+      <td class="left" style="width: 50%;">
+        <b><?php echo $text_referrer_name; ?></b> <?php echo $referrer_name; ?><br />
+    </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+
+
   <table class="list">
     <thead>
       <tr>

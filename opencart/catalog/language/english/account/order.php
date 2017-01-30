@@ -5,6 +5,15 @@ $_['heading_title']         = 'Order History';
 // Text
 $_['text_account']          = 'Account';
 $_['text_order']            = 'Order Information';
+
+
+
+
+$_['text_referrer_info']    = 'Referrer Info';
+
+
+
+
 $_['text_order_detail']     = 'Order Details';
 $_['text_invoice_no']       = 'Invoice No.:';
 $_['text_order_id']         = 'Order ID:';
@@ -22,6 +31,14 @@ $_['text_history']          = 'Order History';
 $_['text_success']          = 'You have successfully added the products from order ID #%s to your cart!';
 $_['text_empty']            = 'You have not made any previous orders!';
 $_['text_error']            = 'The order you requested could not be found!';
+
+
+
+
+$_['text_referrer_name']    = 'Name:';
+$_['text_referrer_id']      = 'ID:';
+
+
 
 // Column
 $_['column_name']           = 'Product Name';

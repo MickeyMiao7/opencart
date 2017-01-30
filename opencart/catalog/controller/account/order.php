@@ -83,6 +83,11 @@ class ControllerAccountOrder extends Controller {
 		$this->data['text_total'] = $this->language->get('text_total');
 		$this->data['text_empty'] = $this->language->get('text_empty');
 
+
+
+        $this->data['text_referrer'] = $this->language->get('text_referrer');
+
+
 		$this->data['button_view'] = $this->language->get('button_view');
 		$this->data['button_reorder'] = $this->language->get('button_reorder');
 		$this->data['button_continue'] = $this->language->get('button_continue');
@@ -232,7 +237,26 @@ class ControllerAccountOrder extends Controller {
 			
 			$this->data['order_id'] = $this->request->get['order_id'];
 			$this->data['date_added'] = date($this->language->get('date_format_short'), strtotime($order_info['date_added']));
-			
+
+
+
+
+
+			// Get Referrer Info
+
+
+            $this->data['referrer_id'] = $order_info['referrer_id'];
+            $this->data['referrer_name'] = '';
+            
+            if (data['referrer_id']){
+                $this->data['referrer_name'] = $this->model_account_order->getCustomerName($order_info['referrer_id']);
+            }
+
+
+
+
+
+
 			if ($order_info['payment_address_format']) {
       			$format = $order_info['payment_address_format'];
     		} else {
