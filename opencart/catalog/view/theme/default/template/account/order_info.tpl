@@ -63,7 +63,7 @@
 
     <tbody>
     <tr>
-
+      <?php if ($referrer_id){ ?>
       <td class="left" style="width: 50%;">
         <b><?php echo $text_referrer_id; ?></b> <?php echo $referrer_id; ?><br />
 
@@ -71,7 +71,7 @@
       <td class="left" style="width: 50%;">
         <b><?php echo $text_referrer_name; ?></b> <?php echo $referrer_name; ?><br />
       </td>
-  
+      <?php } ?>
 
 
     </tr>
