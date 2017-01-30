@@ -114,16 +114,18 @@
 
 
               <td align="right">
+                  <a onclick="filter();" class="button"><?php echo $button_filter; ?></a>
+
+
+
+
                   <a onclick="getBestCustomer();" class="button"><?php echo $button_filter_best_customer; ?></a>
                   <a onclick="getBestReferrer();" class="button"><?php echo $button_filter_best_referrer; ?></a>
+                  
 
 
 
 
-
-
-
-                  <a onclick="filter();" class="button"><?php echo $button_filter; ?></a>
               </td>
             </tr>
             <?php if ($customers) { ?>
