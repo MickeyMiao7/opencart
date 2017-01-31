@@ -38,5 +38,17 @@
       <li><a href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a></li>
     </ul>
   </div>
+
+
+
+  <h2><?php echo $text_my_referrer_id; ?></h2>
+  <div class="content">
+    <ul>
+      <li><?php echo $my_referrer_id; ?></li>
+    </ul>
+  </div>
+
+
+
   <?php echo $content_bottom; ?></div>
 <?php echo $footer; ?> 
