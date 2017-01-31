@@ -53,7 +53,7 @@ class ControllerAccountAccount extends Controller {
 
 
 
-		$this->data['text_my_referrer_id'] = $this->language->get('text_referrer');
+		$this->data['text_my_referrer_id'] = $this->language->get('text_my_referrer_id');
 
 
 
