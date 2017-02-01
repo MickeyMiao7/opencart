@@ -346,13 +346,11 @@
 
 
 
-
+<!--
 
   <div class="box">
+
     <div class="box-heading">You Might Also Like ...</div>
-    <?php var_dump($best_seller_products); ?>
-
-
     <div class="box-content">
       <div class="box-product">
       <?php foreach ($products_under_same_categoy as $product) { ?>
@@ -392,6 +390,8 @@
 
   </div>
 </div>
+
+-->
 <!--
 
   <?php if (count($best_seller_products) == 0) { ?>
