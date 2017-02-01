@@ -346,52 +346,46 @@
 
 
 
-<!--
+
 
   <div class="box">
-
     <div class="box-heading">You Might Also Like ...</div>
+    <?php var_dump($best_seller_products); ?>
     <div class="box-content">
       <div class="box-product">
-      <?php foreach ($products_under_same_categoy as $product) { ?>
-        <?php if (in_array($product['product_id'], $best_seller_products_ids)){
+      <?php foreach ($best_seller_products as $product) { ?>
+
+        <div>
 
 
+          <?php if ($product['thumb']) { ?>
+            <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
+          <?php } ?>
 
+          <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
 
-          <div>
-
-
-            <?php if ($product['thumb']) { ?>
-              <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
+          <div class="price">
+            <?php if (!$product['special']) { ?>
+            <?php echo $product['price']; ?>
+            <?php } else { ?>
+            <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
             <?php } ?>
-
-            <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
-
-            <div class="price">
-              <?php if (!$product['special']) { ?>
-              <?php echo $product['price']; ?>
-              <?php } else { ?>
-              <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
-              <?php } ?>
-            </div>
-
-            <?php if ($product['rating']) { ?>
-            <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
-            <?php } ?>
-
-            <a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a>
-
           </div>
 
-        <?php } ?>
+          <?php if ($product['rating']) { ?>
+          <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
+          <?php } ?>
+
+          <a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a>
+
+        </div>
+
       <?php } ?>
+
+      </div>
     </div>
-
   </div>
-</div>
 
--->
 <!--
 
   <?php if (count($best_seller_products) == 0) { ?>
