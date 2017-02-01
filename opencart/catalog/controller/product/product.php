@@ -464,6 +464,10 @@ class ControllerProductProduct extends Controller {
 
 
 
+
+
+
+
             // Get recommendation info for the product
             $categories = $this->model_catalog_product->getCategories($product_id);
             $this->data['best_seller_products_ids'] = array();
@@ -517,11 +521,30 @@ class ControllerProductProduct extends Controller {
                     );
                 }
             }
-			$best_seller_products = $this->model_catalog_product->getBestSellerProducts(100);
-			$this->data['tmp'] = array();
+
+            $this->data['best_seller_products'] = array();
+            $best_seller_products = $this->model_catalog_product->getBestSellerProducts(100);
+            $count = 0;
 			foreach ($best_seller_products as $best_seller){
-				$this->data['tmp'][] = $best_seller['product_id'];
+				$flag = false;
+				$tmp_categories = $this->model_catalog_product->getCategories($best_seller['product_id']);
+				foreach($tmp_categories as $category) {
+                    if (in_array($category, $categories)) {
+                        $flag = true;
+                    }
+                }
+                if($flag){
+                    $count += 1;
+					if($count > 5){
+						break;
+					}
+                    $this->data['best_seller_products'][] = $best_seller;
+				}
+
+
 			}
+
+
 
 
 
