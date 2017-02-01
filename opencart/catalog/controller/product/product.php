@@ -529,16 +529,16 @@ class ControllerProductProduct extends Controller {
                 $this->data['tmp'][] = $best_seller['product_id'];
 				$flag = false;
 				$tmp_categories = $this->model_catalog_product->getCategories($best_seller['product_id']);
-				foreach($tmp_categories as $category) {
-                    if (in_array($category, $categories)) {
+				foreach($tmp_categories as $tmp_category) {
+                    if (in_array($tmp_category, $categories)) {
                         $flag = true;
                     }
                 }
-                if($flag){
+                if($flag == true){
                     $count += 1;
-					if($count > 5){
-						break;
-					}
+//					if($count > 5){
+//						break;
+//					}
                     $this->data['best_seller_products_ids'][] = $best_seller['product_id'];
 				}
 
