@@ -528,7 +528,7 @@ class ControllerProductProduct extends Controller {
             $best_seller_products = $this->model_catalog_product->getBestSellerProducts(100);
             $count = 0;
 			foreach ($best_seller_products as $best_seller){
-				if($best_seller['product_id'] == $product_id){
+				if(($best_seller['product_id'] == $product_id) || (in_array($best_seller['product_id'], $data['best_seller_products_ids']))){
 					continue;
 				}
 				$flag = false;
