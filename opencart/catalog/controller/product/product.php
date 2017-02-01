@@ -528,6 +528,9 @@ class ControllerProductProduct extends Controller {
             $best_seller_products = $this->model_catalog_product->getBestSellerProducts(100);
             $count = 0;
 			foreach ($best_seller_products as $best_seller){
+				if($best_seller['product_id'] == $product_id){
+					continue;
+				}
 				$flag = false;
 				$tmp_categories = $this->model_catalog_product->getCategories($best_seller['product_id']);
 
@@ -538,9 +541,9 @@ class ControllerProductProduct extends Controller {
                 }
                 if($flag == true){
                     $count += 1;
-//					if($count > 5){
-//						break;
-//					}
+					if($count > 5){
+						break;
+					}
                     $this->data['best_seller_products_ids'][] = $best_seller['product_id'];
 				}
 
