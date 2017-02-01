@@ -473,13 +473,13 @@ class ControllerProductProduct extends Controller {
             $this->data['best_seller_products_ids'] = array();
             $this->data['best_seller_products'] = array();
 
-            $products_under_same_caterogy = array();
+            $this->data['products_under_same_category'] = array();
             $products_ids = array();
             foreach ($categories as $category) {
                 $data = array('filter_category_id' => $category['category_id']);
                 $products = $this->model_catalog_product->getProducts($data);
                 foreach ($products as $product) {
-                    if (in_array($product['product_id'], $products_under_same_caterogy) || $product['product_id'] == $product_id) {
+                    if (in_array($product['product_id'], $this->data['products_under_same_category']) || $product['product_id'] == $product_id) {
                         continue;
                     }
                     $products_ids[] = $product['product_id'];
@@ -508,7 +508,7 @@ class ControllerProductProduct extends Controller {
                     } else {
                         $rating = false;
                     }
-                    $products_under_same_caterogy = array(
+                    $this->data['products_under_same_category'][] = array(
                         'product_id' => $product['product_id'],
                         'thumb' => $image,
                         'name' => $product['name'],
@@ -522,7 +522,7 @@ class ControllerProductProduct extends Controller {
                 }
             }
 
-            $this->data['best_seller_products'] = array();
+            $this->data['best_seller_products_ids'] = array();
             $best_seller_products = $this->model_catalog_product->getBestSellerProducts(100);
             $count = 0;
 			foreach ($best_seller_products as $best_seller){
@@ -538,7 +538,7 @@ class ControllerProductProduct extends Controller {
 					if($count > 5){
 						break;
 					}
-                    $this->data['best_seller_products'][] = $best_seller;
+                    $this->data['best_seller_products_ids'][] = $best_seller['product_id'];
 				}
 
 
