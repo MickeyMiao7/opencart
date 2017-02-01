@@ -481,7 +481,7 @@ class ControllerProductProduct extends Controller {
                 $categories_ids[] = $category['category_id'];
                 $products = $this->model_catalog_product->getProducts($data);
                 foreach ($products as $product) {
-                    if (in_array($product['product_id'], $this->data['products_under_same_category']) || $product['product_id'] == $product_id) {
+                    if (in_array($product['product_id'], $products_ids) || $product['product_id'] == $product_id) {
                         continue;
                     }
                     $products_ids[] = $product['product_id'];
