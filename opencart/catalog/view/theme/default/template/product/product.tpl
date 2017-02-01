@@ -349,8 +349,8 @@
 
 <div class="box">
   <div class="box-heading">You Might Also Like ...</div>
-  <?php if (count($pbest_seller_products_ids) == 0) { ?>
-  <h3>Sorry, There is no recommendation for this product</h3>
+  <?php if (count($best_seller_products_ids) == 0) { ?>
+  <p>Sorry, There is no recommendation for this product</p>
   <?php } ?>
 
 
