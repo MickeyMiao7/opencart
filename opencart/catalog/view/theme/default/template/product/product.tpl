@@ -352,6 +352,8 @@
     <div class="box-heading">You Might Also Like ...</div>
     <div class="box-content">
       <div class="box-product">
+        <?php var_dump($sql); ?>
+        <!--
       <?php var_dump($best_seller_products_ids); ?>
       <?php foreach ($best_seller_products as $product) { ?>
 
@@ -381,8 +383,9 @@
         </div>
 
       <?php } ?>
-      </div>
+      -->
     </div>
+      </div>
   </div>
 
 <!--
