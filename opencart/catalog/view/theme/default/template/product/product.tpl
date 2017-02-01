@@ -1,5 +1,5 @@
 <?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
-<div id="content"><?php echo $content_top; ?>
+<div id="content" xmlns="http://www.w3.org/1999/html"><?php echo $content_top; ?>
   <div class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
@@ -348,8 +348,10 @@
 
 
 
-  <div class="box">
+  <br class="box">
     <div class="box-heading">You Might Also Like ...</div>
+    <?php var_dump($categories); ?>
+  </br>
     <?php var_dump($best_seller_products_ids); ?>
     <div class="box-content">
       <div class="box-product">
