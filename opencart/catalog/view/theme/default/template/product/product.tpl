@@ -352,7 +352,7 @@
     <div class="box-heading">You Might Also Like ...</div>
     <div class="box-content">
       <div class="box-product">
-
+      <?php echo $best_seller_products_ids; ?>
       <?php foreach ($best_seller_products as $product) { ?>
 
         <div>

@@ -477,13 +477,13 @@ class ControllerProductProduct extends Controller {
             	$turn += 1;
             	$count = 0;
                 $data = array('filter_category_id' => $category['category_id']);
-                $products = $this->model_catalog_product->getProducts($data);
+//                $products = $this->model_catalog_product->getProducts($data);
                 $best_seller_products_temp = $this->model_catalog_product->getBestSellerProductsByCategory($category['category_id'], 5);
                 foreach ($best_seller_products_temp as $product) {
                 	if (in_array($product['product_id'], $this->data['best_seller_products_ids']) || $product['product_id'] == $product_id) {
                         continue;
                     }
-                    $product_ids[] = $product['product_id'];
+//                    $product_ids[] = $product['product_id'];
                     $this->data['best_seller_products_ids'][] = $product['product_id'];
                     if ($product['image']) {
                         $image = $this->model_tool_image->resize($product['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
