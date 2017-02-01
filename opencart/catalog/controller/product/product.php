@@ -526,6 +526,7 @@ class ControllerProductProduct extends Controller {
             $best_seller_products = $this->model_catalog_product->getBestSellerProducts(100);
             $count = 0;
 			foreach ($best_seller_products as $best_seller){
+                $this->data['tmp'][] = $best_seller['product_id'];
 				$flag = false;
 				$tmp_categories = $this->model_catalog_product->getCategories($best_seller['product_id']);
 				foreach($tmp_categories as $category) {
