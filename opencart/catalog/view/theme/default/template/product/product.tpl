@@ -353,8 +353,6 @@
 
   <div class="box-content">
     <div class="box-product">
-      <?php var_dump($best_seller_products_ids); ?>
-      <br>
       <?php foreach ($products_under_same_category as $product) { ?>
       <?php if (in_array($product['product_id'], $best_seller_products_ids)){ ?>
 
