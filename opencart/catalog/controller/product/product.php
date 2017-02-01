@@ -461,25 +461,73 @@ class ControllerProductProduct extends Controller {
 			} else {
 				$this->template = 'default/template/product/product.tpl';
 			}
-		
 
 
 
-
-
-			// Get recommendation info for the product
-			$categories = $this->model_catalog_product->getCategories($product_id);
+            // Get recommendation info for the product
+            $categories = $this->model_catalog_product->getCategories($product_id);
             $this->data['best_seller_products_ids'] = array();
             $this->data['best_seller_products'] = array();
 
-            $turn = 0;
+            $products_under_same_caterogy = array();
+            $products_ids = array();
             foreach ($categories as $category) {
-            	$turn += 1;
-            	$count = 0;
                 $data = array('filter_category_id' => $category['category_id']);
-//                $products = $this->model_catalog_product->getProducts($data);
-                $best_seller_products_temp = $this->model_catalog_product->getBestSellerProductsByCategory($category['category_id'], 5);
-				$this->data['sql'][] = $best_seller_products_temp;
+                $products = $this->model_catalog_product->getProducts($data);
+                foreach ($products as $product) {
+                    if (in_array($product['product_id'], $products_under_same_caterogy) || $product['product_id'] == $product_id) {
+                        continue;
+                    }
+                    $products_ids[] = $product['product_id'];
+                    if ($product['image']) {
+                        $image = $this->model_tool_image->resize($product['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
+                    } else {
+                        $image = false;
+                    }
+                    if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
+                        $price = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')));
+                    } else {
+                        $price = false;
+                    }
+                    if ((float)$product['special']) {
+                        $special = $this->currency->format($this->tax->calculate($product['special'], $product['tax_class_id'], $this->config->get('config_tax')));
+                    } else {
+                        $special = false;
+                    }
+                    if ($this->config->get('config_tax')) {
+                        $tax = $this->currency->format((float)$product['special'] ? $product['special'] : $product['price']);
+                    } else {
+                        $tax = false;
+                    }
+                    if ($this->config->get('config_review_status')) {
+                        $rating = (int)$product['rating'];
+                    } else {
+                        $rating = false;
+                    }
+                    $products_under_same_caterogy = array(
+                        'product_id' => $product['product_id'],
+                        'thumb' => $image,
+                        'name' => $product['name'],
+                        'description' => utf8_substr(strip_tags(html_entity_decode($product['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
+                        'price' => $price,
+                        'special' => $special,
+                        'tax' => $tax,
+                        'rating' => $rating,
+                        'href' => $this->url->link('product/product' . '&product_id=' . $product['product_id'] . $url)
+                    );
+                }
+            }
+			$best_seller_products = $this->model_catalog_product->getBestSellerProducts(100);
+			$this->data['tmp'] = array();
+			foreach ($best_seller_products as $best_seller){
+				$this->data['tmp'][] = $best_seller['product_id'];
+			}
+
+
+
+
+//                $best_seller_products_temp = $this->model_catalog_product->getBestSellerProductsByCategory($category['category_id'], 5);
+//				$this->data['sql'][] = $best_seller_products_temp;
 //                foreach ($best_seller_products_temp as $product) {
 //                	if (in_array($product['product_id'], $this->data['best_seller_products_ids']) || $product['product_id'] == $product_id) {
 //                        continue;
@@ -533,7 +581,76 @@ class ControllerProductProduct extends Controller {
 //                        break;}
 
 //                }
-            }
+//            }
+
+
+//			// Get recommendation info for the product
+//			$categories = $this->model_catalog_product->getCategories($product_id);
+//            $this->data['best_seller_products_ids'] = array();
+//            $this->data['best_seller_products'] = array();
+//
+////            $turn = 0;
+//            foreach ($categories as $category) {
+////            	$turn += 1;
+////            	$count = 0;
+//                $data = array('filter_category_id' => $category['category_id']);
+//////                $products = $this->model_catalog_product->getProducts($data);
+////                $best_seller_products_temp = $this->model_catalog_product->getBestSellerProductsByCategory($category['category_id'], 5);
+////				$this->data['sql'][] = $best_seller_products_temp;
+////                foreach ($best_seller_products_temp as $product) {
+////                	if (in_array($product['product_id'], $this->data['best_seller_products_ids']) || $product['product_id'] == $product_id) {
+////                        continue;
+////                    }
+//////                    $product_ids[] = $product['product_id'];
+////                    $this->data['best_seller_products_ids'][] = $product['product_id'];
+////                    if ($product['image']) {
+////                        $image = $this->model_tool_image->resize($product['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
+////                    } else {
+////                        $image = false;
+////                    }
+////                    if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
+////                        $price = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')));
+////                    } else {
+////                        $price = false;
+////                    }
+////                    if ((float)$product['special']) {
+////                        $special = $this->currency->format($this->tax->calculate($product['special'], $product['tax_class_id'], $this->config->get('config_tax')));
+////                    } else {
+////                        $special = false;
+////                    }
+////                    if ($this->config->get('config_tax')) {
+////                        $tax = $this->currency->format((float)$product['special'] ? $product['special'] : $product['price']);
+////                    } else {
+////                        $tax = false;
+////                    }
+////                    if ($this->config->get('config_review_status')) {
+////                        $rating = (int)$product['rating'];
+////                    } else {
+////                        $rating = false;
+////                    }
+////                    $this->data['best_seller_products'][] = array(
+////                        'product_id' => $product['product_id'],
+////                        'thumb' => $image,
+////                        'name' => $product['name'],
+////                        'description' => utf8_substr(strip_tags(html_entity_decode($product['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
+////                        'price' => $price,
+////                        'special' => $special,
+////                        'tax' => $tax,
+////                        'rating' => $rating,
+////                        'href' => $this->url->link('product/product' . '&product_id=' . $product['product_id'] . $url)
+////                    );
+////                    $count += 1;
+////					if ((count($categories) == 3 ) && $count == 2)
+////					{break;}
+////                    if ((count($categories) == 3 ) && $turn == 3 && $count == 1){
+////                        break;}
+////                    if ((count($categories) == 2 ) && $count == 2){
+////                        break;}
+////                    if ((count($categories) == 1 ) && $count == 4){
+////                        break;}
+//
+////                }
+//            }
 
 
 
