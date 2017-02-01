@@ -351,6 +351,7 @@
   <div class="box">
     <div class="box-heading">You Might Also Like ...</div>
     <?php echo(count($products_under_same_category)); ?>
+    <?php var_dump($best_seller_products_ids); ?>
     <div class="box-content">
       <div class="box-product">
       <?php foreach ($best_seller_products as $product) { ?>

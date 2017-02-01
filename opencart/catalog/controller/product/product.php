@@ -522,27 +522,27 @@ class ControllerProductProduct extends Controller {
                 }
             }
 
-//            $this->data['best_seller_products_ids'] = array();
-//            $best_seller_products = $this->model_catalog_product->getBestSellerProducts(100);
-//            $count = 0;
-//			foreach ($best_seller_products as $best_seller){
-//				$flag = false;
-//				$tmp_categories = $this->model_catalog_product->getCategories($best_seller['product_id']);
-//				foreach($tmp_categories as $category) {
-//                    if (in_array($category, $categories)) {
-//                        $flag = true;
-//                    }
-//                }
-//                if($flag){
-//                    $count += 1;
-//					if($count > 5){
-//						break;
-//					}
-//                    $this->data['best_seller_products_ids'][] = $best_seller['product_id'];
-//				}
-//
-//
-//			}
+            $this->data['best_seller_products_ids'] = array();
+            $best_seller_products = $this->model_catalog_product->getBestSellerProducts(100);
+            $count = 0;
+			foreach ($best_seller_products as $best_seller){
+				$flag = false;
+				$tmp_categories = $this->model_catalog_product->getCategories($best_seller['product_id']);
+				foreach($tmp_categories as $category) {
+                    if (in_array($category, $categories)) {
+                        $flag = true;
+                    }
+                }
+                if($flag){
+                    $count += 1;
+					if($count > 5){
+						break;
+					}
+                    $this->data['best_seller_products_ids'][] = $best_seller['product_id'];
+				}
+
+
+			}
 
 
 
