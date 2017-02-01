@@ -475,7 +475,7 @@ class ControllerProductProduct extends Controller {
             $turn = 0;
             foreach ($categories as $category) {
             	$turn += 1;
-            	$count = 1;
+            	$count = 0;
                 $data = array('filter_category_id' => $category['category_id']);
                 $products = $this->model_catalog_product->getProducts($data);
                 $best_seller_products_temp = $this->model_catalog_product->getBestSellerProductsByCategory($category['category_id'], 6);
@@ -526,9 +526,9 @@ class ControllerProductProduct extends Controller {
 						break;
                     if ((count($categories) == 3 ) && $turn == 3 && $count == 1)
                         break;
-                    if ((count($categories) == 2 ) && $count == 3)
+                    if ((count($categories) == 2 ) && $count == 2)
                         break;
-                    if ((count($categories) == 1 ) && $count == 6)
+                    if ((count($categories) == 1 ) && $count == 4)
                         break;
 
                 }
