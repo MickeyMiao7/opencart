@@ -350,7 +350,7 @@
 
   <div class="box">
     <div class="box-heading">You Might Also Like ...</div>
-    <?php echo(count($data_under_same_category)); ?>
+    <?php echo(count($products_under_same_category)); ?>
     <div class="box-content">
       <div class="box-product">
       <?php foreach ($best_seller_products as $product) { ?>
