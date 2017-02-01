@@ -523,7 +523,7 @@ class ControllerProductProduct extends Controller {
                     );
                 }
             }
-
+            $this->data['products_under_same_category'] = array_unique($this->data['products_under_same_category']);
             $this->data['best_seller_products_ids'] = array();
             $best_seller_products = $this->model_catalog_product->getBestSellerProducts(100);
 //            $count = 0;
@@ -547,6 +547,7 @@ class ControllerProductProduct extends Controller {
                     $this->data['best_seller_products_ids'][] = $best_seller['product_id'];
 				}
 			}
+            $this->data['best_seller_products_ids'] = array_unique($this->data['best_seller_products_ids']);
             $this->data['best_seller_products_ids'] = array_slice($this->data['best_seller_products_ids'], 0, 4);
 
 
