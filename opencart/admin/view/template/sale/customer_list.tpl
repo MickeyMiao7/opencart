@@ -104,7 +104,7 @@
                 </select></td>
               <td><input type="text" name="filter_ip" value="<?php echo $filter_ip; ?>" /></td>
               <td><input type="text" name="filter_date_added" value="<?php echo $filter_date_added; ?>" size="12" id="date" /></td>
-              <td>No. Orders</td>
+              <td></td>
 
 
 
@@ -115,8 +115,6 @@
 
               <td align="right">
                   <a onclick="filter();" class="button"><?php echo $button_filter; ?></a>
-
-
 
 
                   <a onclick="getBestCustomer();" class="button"><?php echo $button_filter_best_customer; ?></a>
@@ -143,8 +141,9 @@
               <td class="left"><?php echo $customer['approved']; ?></td>
               <td class="left"><?php echo $customer['ip']; ?></td>
               <td class="left"><?php echo $customer['date_added']; ?></td>
-
+              <td class="left"></td>
               <td class="left"><?php echo $customer['orders']; ?></td>
+              <td class="left"><?php echo $customer['recommendations']; ?></td>
 
 
                 <td class="left"><select onchange="((this.value !== '') ? window.open('index.php?route=sale/customer/login&token=<?php echo $token; ?>&customer_id=<?php echo $customer['customer_id']; ?>&store_id=' + this.value) : null); this.value = '';">

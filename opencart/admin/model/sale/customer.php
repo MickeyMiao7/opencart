@@ -28,14 +28,19 @@ class ModelSaleCustomer extends Model {
 
 
 
-    public function getOrdersOfCustomer($customer_id){
+    public function getNoOfOrders($customer_id){
         $query = $this->db->query("SELECT * from " . DB_PREFIX . "order WHERE customer_id =" . (int)$customer_id);
         $rows = $query->rows;
         return count($rows);
 
     }
 
+    public function getNoOfRec($customer_id){
+        $query = $this->db->query("SELECT * from " . DB_PREFIX . "order WHERE referrer_id =" . (int)$customer_id);
+        $rows = $query->rows;
+        return count($rows);
 
+    }
 
 
 

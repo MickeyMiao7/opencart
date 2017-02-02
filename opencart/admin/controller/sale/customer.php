@@ -450,7 +450,8 @@ class ControllerSaleCustomer extends Controller {
 				'href' => $this->url->link('sale/customer/update', 'token=' . $this->session->data['token'] . '&customer_id=' . $result['customer_id'] . $url, 'SSL')
 			);
 
-			$orders = $this->model_sale_customer->getOrdersOfCustomer($result['customer_id']);
+			$orders = $this->model_sale_customer->getNoOfOrders($result['customer_id']);
+			$recommendations = $this->model_sale_customer->getNoOfRec($result['customer_id']);
 			$this->data['customers'][] = array(
 				'customer_id'    => $result['customer_id'],
 				'name'           => $result['name'],
@@ -462,7 +463,9 @@ class ControllerSaleCustomer extends Controller {
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'selected'       => isset($this->request->post['selected']) && in_array($result['customer_id'], $this->request->post['selected']),
 				'action'         => $action,
-                'orders'         => $orders
+                'orders'         => $orders,
+                'recomendations' => $recommendations
+
 			);
 		}	
 					
