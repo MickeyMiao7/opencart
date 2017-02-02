@@ -57,7 +57,7 @@
           <td style="text-align: right;">
             <a onclick="filter();" class="button"><?php echo $button_filter; ?></a>
 
-            <!-- <a onclick="exportToCsv();" class="button"><?php echo $button_export; ?></a>  -->
+            <a onclick="exportToCsv();" class="button"><?php echo $button_export; ?></a>
 
             <a href="<?php echo $export; ?>" class="button">
               <?php echo $button_export; ?>
@@ -114,12 +114,13 @@
 
 
 
-
-
-
-
-
-
+<script type="text/javascript"><!--
+    //////////////////////////////////////////////////////////
+    function exportToCsv () {
+        url = 'index.php?route=report/sale_order&token=<?php echo $token; ?>';
+        location = document.URL + '&export';
+    }
+    //--></script>
 
 
 
