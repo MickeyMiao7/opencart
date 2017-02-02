@@ -9,7 +9,9 @@ class ModelReportSale extends Model {
 			$sql .= " WHERE o.order_status_id > '0'";
 		}
 
-
+        if (!empty($data['filter_referrer_id'])) {
+            $sql .= " AND o.referrer_id = '" . (int)$data['filter_referrer_id'] . "'";
+        }
 
 
 

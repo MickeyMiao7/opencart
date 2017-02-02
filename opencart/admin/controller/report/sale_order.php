@@ -227,15 +227,22 @@ class ControllerReportSaleOrder extends Controller {
 		
 		$this->data['orders'] = array();
 		
-		$data = array(
+        $filter_referrer_id = 0;
+        if ($filter_referrer_name){
+            $filter_referrer_id = $this->model_report_sale->getCustomerId($filter_referrer_name);
+        }
+
+
+
+        $data = array(
 			'filter_date_start'	     => $filter_date_start, 
 			'filter_date_end'	     => $filter_date_end, 
 			'filter_group'           => $filter_group,
 			'filter_order_status_id' => $filter_order_status_id,
             'filter_customer_name'   => $filter_customer_name,
-            'filter_referrer_name'   => $filter_referrer_name,
+            'filter_referrer_id'     => $filter_referrer_id,
 			'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
-			'limit'                  => $this->config->get('config_admin_limit')
+			'limit'                  => $this->config->get('config_admin_limit'),
 		);
 		
 		$order_total = $this->model_report_sale->getTotalOrders($data);
@@ -245,12 +252,7 @@ class ControllerReportSaleOrder extends Controller {
 
 
 
-        $referrer_id = 0;
-        if ($filter_referrer_name){
-            $referrer_id = $this->model_report_sale->getCustomerId($filter_referrer_name);
-        }
 
-        $this->data['tmp'] = int($referrer_id);
         if (isset($this->request->get['export'])) {
             export_to_csv($results, 'sale_order');
         }
@@ -258,10 +260,6 @@ class ControllerReportSaleOrder extends Controller {
 
 
 		foreach ($results as $result) {
-            if(int($referrer_id) && ($result['referrer_id'] != $referrer_id)){
-                continue;
-            }
-
 			$this->data['orders'][] = array(
 				'date_start' => date($this->language->get('date_format_short'), strtotime($result['date_start'])),
 				'date_end'   => date($this->language->get('date_format_short'), strtotime($result['date_end'])),
