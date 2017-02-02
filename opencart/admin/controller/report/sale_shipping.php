@@ -224,7 +224,7 @@ class ControllerReportSaleShipping extends Controller {
 
 
         $this->data['token'] = $this->session->data['token'];
-        $this->data['export'] = $this->url->link('report/sale_order/export', 'token=' . $this->session->data['token'], 'SSL');
+        $this->data['export'] = $this->url->link('report/sale_shipping/export', 'token=' . $this->session->data['token'], 'SSL');
 		
 		$this->load->model('localisation/order_status');
 		
