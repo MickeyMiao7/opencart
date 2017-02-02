@@ -58,6 +58,9 @@
                 <a href="<?php echo $sort_date_added; ?>"><?php echo $column_date_added; ?></a>
                 <?php } ?></td>
               <td class="left"><?php echo $column_login; ?></td>
+              <td class="left">No. Orders</td>
+              <td class="left">No. Recommendations</td>
+
               <td class="right"><?php echo $column_action; ?></td>
             </tr>
           </thead>
