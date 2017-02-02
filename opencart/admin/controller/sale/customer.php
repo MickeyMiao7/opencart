@@ -449,7 +449,8 @@ class ControllerSaleCustomer extends Controller {
 				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('sale/customer/update', 'token=' . $this->session->data['token'] . '&customer_id=' . $result['customer_id'] . $url, 'SSL')
 			);
-			
+
+			$orders = $this->model_sale_customer->getOrdersOfCustomer($result['customer_id']);
 			$this->data['customers'][] = array(
 				'customer_id'    => $result['customer_id'],
 				'name'           => $result['name'],
@@ -460,7 +461,8 @@ class ControllerSaleCustomer extends Controller {
 				'ip'             => $result['ip'],
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'selected'       => isset($this->request->post['selected']) && in_array($result['customer_id'], $this->request->post['selected']),
-				'action'         => $action
+				'action'         => $action,
+                'orders'         => $orders
 			);
 		}	
 					
