@@ -14,7 +14,13 @@ class ModelSaleOrder extends Model {
         if (is_numeric($order_id)) {
             $query = $this->db->query("SELECT * FROM  " . DB_PREFIX . "order WHERE order_id = " . (int)$order_id);
             $row = $query->row;
-            return $row;
+            if ($row){
+                return $row['referrer_id'];
+            }
+            else{
+                return "";
+            }
+
         } else {
             return "";
         }
