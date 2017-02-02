@@ -1567,19 +1567,6 @@ class ControllerSaleOrder extends Controller {
 			$this->data['fax'] = $order_info['fax'];
 			$this->data['comment'] = nl2br($order_info['comment']);
 			$this->data['shipping_method'] = $order_info['shipping_method'];
-
-
-
-
-//            $this->data['referrer_id'] = $this->model_sale_order->getReferrerId($order_id);
-//            $this->data['referrer_name'] = '';
-//            if ($this->data['referrer_id']){
-//                $this->data['referrer_name'] = $this->model_sale_order->getCustomerName($this->data['referrer_id']);
-//            }
-
-
-
-
 			$this->data['payment_method'] = $order_info['payment_method'];
 			$this->data['total'] = $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value']);
 			
