@@ -250,7 +250,7 @@ class ControllerReportSaleOrder extends Controller {
             $referrer_id = $this->model_report_sale->getCustomerId($filter_referrer_name);
         }
 
-
+        $this->data['tmp'] = $referrer_id;
         if (isset($this->request->get['export'])) {
             export_to_csv($results, 'sale_order');
         }
