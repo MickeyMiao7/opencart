@@ -316,6 +316,7 @@
         <tr>
           <td>
           <?php var_dump($referrer_id); ?>
+          <?php var_dump($referrer_name); ?>
           </td>
         </tr>
         </table>
