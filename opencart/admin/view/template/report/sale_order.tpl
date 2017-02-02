@@ -215,6 +215,35 @@ $(document).ready(function() {
 
 
 
+    $('input[name=\'filter_referrer_name\']').catcomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: 'index.php?route=sale/customer/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+                dataType: 'json',
+                success: function(json) {
+                    response($.map(json, function(item) {
+                        return {
+                            category: item.customer_group,
+                            label: item.name,
+                            value: item.customer_id
+                        }
+                    }));
+                }
+            });
+        },
+        select: function(event, ui) {
+            $(this).val(ui.item.label);
+            filter(); // immediately filter once select
+        },
+        focus: function(event, ui) {
+            return false;
+        }
+    });
+
+
+
+
+
 
 });
 //--></script>
