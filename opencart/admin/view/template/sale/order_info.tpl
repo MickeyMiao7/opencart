@@ -331,7 +331,12 @@
         </table>
 
         <?php } else { ?>
-          <?php echo "No referrer for this oder"; ?>
+
+          <table class="form">
+            <tr>
+              <?php echo "No referrer for this oder"; ?>
+            </tr>
+          </table>
         <?php } ?>
 
       </div>

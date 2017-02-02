@@ -1569,7 +1569,11 @@ class ControllerSaleOrder extends Controller {
 			$this->data['shipping_method'] = $order_info['shipping_method'];
 
 			$this->data['referrer_id'] = $this->model_sale_order->getReferrerId((int)$order_id);
-			$this->data['referrer_name'] = $this->model_sale_order->getCustomerName((int)$this->data['referrer_id']);
+            $this->data['referrer_name'] = '';
+            if ($this->data['referrer_id']){
+                $this->data['referrer_name'] = $this->model_sale_order->getCustomerName((int)$this->data['referrer_id']);
+			}
+
 
 
 			$this->data['payment_method'] = $order_info['payment_method'];
