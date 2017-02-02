@@ -58,9 +58,10 @@
                 <a href="<?php echo $sort_date_added; ?>"><?php echo $column_date_added; ?></a>
                 <?php } ?></td>
               <td class="left"><?php echo $column_login; ?></td>
+                <!--
               <td class="left">No. Orders</td>
               <td class="left">No. Recommendations</td>
-
+-->
               <td class="right"><?php echo $column_action; ?></td>
             </tr>
           </thead>
@@ -145,8 +146,8 @@
               <td class="left"><?php echo $customer['ip']; ?></td>
               <td class="left"><?php echo $customer['date_added']; ?></td>
               <td class="left"></td>
-              <td class="left"><?php echo $customer['orders']; ?></td>
-              <td class="left"><?php echo $customer['recommendations']; ?></td>
+             <!-- <td class="left"><?php echo $customer['orders']; ?></td>
+              <td class="left"><?php echo $customer['recommendations']; ?></td> -->
 
 
                 <td class="left"><select onchange="((this.value !== '') ? window.open('index.php?route=sale/customer/login&token=<?php echo $token; ?>&customer_id=<?php echo $customer['customer_id']; ?>&store_id=' + this.value) : null); this.value = '';">
