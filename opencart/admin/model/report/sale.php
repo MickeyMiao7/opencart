@@ -4,7 +4,7 @@ class ModelReportSale extends Model {
         if (is_string($customer_name)) {
             $query = $this->db->query("SELECT * FROM  " . DB_PREFIX . "customer WHERE CONCAT(firstname, ' ', lastname) LIKE '%" . $customer_name) . "%'";
             $row = $query->row;
-            return $row['customer_id'];
+            return $row;
         } else {
             return "";
         }
