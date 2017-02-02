@@ -250,7 +250,7 @@ class ControllerReportSaleOrder extends Controller {
             $referrer_id = $this->model_report_sale->getCustomerId($filter_referrer_name);
         }
 
-        $this->data['tmp'] = $referrer_id;
+        $this->data['tmp'] = int($referrer_id);
         if (isset($this->request->get['export'])) {
             export_to_csv($results, 'sale_order');
         }
@@ -258,7 +258,7 @@ class ControllerReportSaleOrder extends Controller {
 
 
 		foreach ($results as $result) {
-            if($referrer_id && ($result['referrer_id'] != $referrer_id)){
+            if(int($referrer_id) && ($result['referrer_id'] != $referrer_id)){
                 continue;
             }
 
