@@ -108,7 +108,6 @@
                 </select></td>
               <td><input type="text" name="filter_ip" value="<?php echo $filter_ip; ?>" /></td>
               <td><input type="text" name="filter_date_added" value="<?php echo $filter_date_added; ?>" size="12" id="date" /></td>
-              <td></td>
 
 
 
