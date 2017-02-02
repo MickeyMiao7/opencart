@@ -464,7 +464,7 @@ class ControllerSaleCustomer extends Controller {
 				'selected'       => isset($this->request->post['selected']) && in_array($result['customer_id'], $this->request->post['selected']),
 				'action'         => $action,
                 'orders'         => $orders,
-                'recomendations' => $recommendations
+                'recommendations' => $recommendations
 
 			);
 		}	
