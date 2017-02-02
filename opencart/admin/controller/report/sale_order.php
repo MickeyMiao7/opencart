@@ -46,20 +46,11 @@ class ControllerReportSaleOrder extends Controller {
             'filter_date_end'	     => $filter_date_end,
             'filter_group'           => $filter_group,
             'filter_order_status_id' => $filter_order_status_id,
-
-
-
             'filter_customer_name'   => $filter_customer_name,
-
-
-
-
-
             'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
             'limit'                  => $this->config->get('config_admin_limit')
         );
 
-//is
         $results = $this->model_report_sale->getOrders($data);
 
         foreach ($results as $result) {
@@ -80,55 +71,24 @@ class ControllerReportSaleOrder extends Controller {
         $orders_data = array();
 
 
-        $orders_column = array('Start Date', 'End Date', 'No Of Orders', 'No Of Products', 'Tax', 'Total');
+        $orders_column = array('Start Date', 'End Date', 'No. Orders', 'No. Products', 'Tax', 'Total');
 
-        $orders_data[0]=   $orders_column;
+        $orders_data[0] = $orders_column;
 
         foreach($orders as $orders_row)
         {
-            $orders_data[]=   $orders_row;
+            $orders_data[] = $orders_row;
         }
 
 
         require_once(DIR_SYSTEM . 'library/excel_xml.php');
         $xls = new Excel_XML('UTF-8', false, 'Sales Orders Report');
-
         $xls->addArray($orders_data);
-
         $xls->generateXML('sales_orders_report_'.date('Y-m-d _ H:i:s'));
-
     }
 
 
-    public function export_to_csv($results, $name)
-    {
-//        $this->load->model('report/sale');
-        foreach ($results as $result) {
-            $orders[] = array(
-                'date_start' => date($this->language->get('date_format_short'), strtotime($result['date_start'])),
-                'date_end'   => date($this->language->get('date_format_short'), strtotime($result['date_end'])),
-                'orders'     => $result['orders'],
-                'products'   => $result['products'],
-                'tax'        => $this->currency->format($result['tax'], $this->config->get('config_currency')),
-                'total'      => $this->currency->format($result['total'], $this->config->get('config_currency'))
-            );
-        }
-            $orders_column = array('Start Date', 'End Date', 'No Of Orders', 'No Of Products', 'Tax', 'Total');
 
-            $orders_data[0]=   $orders_column;
-
-            foreach($orders as $orders_row)
-            {
-                $orders_data[]=   $orders_row;
-            }
-            require_once(DIR_SYSTEM . 'library/excel_xml.php');
-            $xls = new Excel_XML('UTF-8', false, 'Sales Orders Report');
-
-            $xls->addArray($orders_data);
-
-            $xls->generateXML('sales_orders_report_'.date('Y-m-d _ H:i:s'));
-
-    }
 
 
 
@@ -158,26 +118,33 @@ class ControllerReportSaleOrder extends Controller {
 		
 		if (isset($this->request->get['filter_group'])) {
 			$filter_group = $this->request->get['filter_group'];
+            $this->data['filter_group'] = $this->request->get['filter_group'];
 		} else {
 			$filter_group = 'week';
+            $this->data['filter_group'] = 'week';
 		}
 		
 		if (isset($this->request->get['filter_order_status_id'])) {
 			$filter_order_status_id = $this->request->get['filter_order_status_id'];
+            $this->data['filter_order_status_id'] = $this->request->get['filter_order_status_id'];
 		} else {
 			$filter_order_status_id = 0;
+            $this->data['filter_order_status_id'] = 0;
 		}
 
         if (isset($this->request->get['filter_customer_name'])) {
             $filter_customer_name = $this->request->get['filter_customer_name'];
+            $this->data['filter_customer_name'] = $this->request->get['filter_customer_name'];
         } else {
             $filter_customer_name = '';
+            $this->data['filter_customer_name'] = '';
         }
 
         if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
+            $this->data['page'] = $this->request->get['page'];
 		} else {
-			$page = 1;
+			$this->data['page'] = 1;
 		}
 
 
