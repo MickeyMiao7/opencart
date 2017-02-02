@@ -312,13 +312,25 @@
       <?php } ?>
 
       <div id="tab-referrer" class="vtabs-content">
+
+
         <table class="form">
-        <tr>
-          <td>
-          <?php var_dump($referrer_id); ?>
-          <?php var_dump($referrer_name); ?>
-          </td>
-        </tr>
+
+          <tr>
+            <?php if ($referrer_id){ ?>
+              <td>
+                <?php echo $referrer_id); ?>
+              </td>
+              <td>
+                <?php echo($referrer_name); ?>
+              </td>
+
+            <?php } else { ?>
+              No Referrer For This Order
+            <?php } ?>
+
+
+          </tr>
         </table>
 
 
