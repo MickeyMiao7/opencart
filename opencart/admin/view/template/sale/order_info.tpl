@@ -330,6 +330,8 @@
           </tr>
         </table>
 
+        <?php } else { ?>
+          <?php echo "No referrer for this oder"; ?>
         <?php } ?>
 
       </div>
