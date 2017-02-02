@@ -163,6 +163,7 @@ class ControllerReportSaleOrder extends Controller {
 		}
 
 
+        $this->data['tmp'] = $this->model_report_sale->getCustomerId("michael");
 
 
 
