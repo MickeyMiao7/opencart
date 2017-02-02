@@ -150,8 +150,8 @@ class ControllerReportSaleOrder extends Controller {
             $filter_referrer_name = $this->request->get['filter_referrer_name'];
             $this->data['filter_referrer_name'] = $this->request->get['filter_referrer_name'];
         } else {
-            $filter_customer_name = '';
-            $this->data['filter_customer_name'] = '';
+            $filter_referrer_name = '';
+            $this->data['filter_referrer_name'] = '';
         }
 
         if (isset($this->request->get['page'])) {
