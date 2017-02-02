@@ -325,8 +325,6 @@
                 <?php echo$referrer_name; ?>
               </td>
 
-            <?php } else { ?>
-              No Referrer For This Order
             <?php } ?>
 
 
