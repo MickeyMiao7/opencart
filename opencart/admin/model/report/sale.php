@@ -347,6 +347,7 @@ class ModelReportSale extends Model {
 //        } else {
 //            return "";
 //        }
+        return 0;
     }
 
 }
