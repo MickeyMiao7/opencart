@@ -317,12 +317,12 @@
         <table class="form">
 
           <tr>
-            <?php if ($referrer_id){ ?>
+            <?php if ($referrer_id) { ?>
               <td>
                 <?php echo $referrer_id); ?>
               </td>
               <td>
-                <?php echo($referrer_name); ?>
+                <?php echo$referrer_name; ?>
               </td>
 
             <?php } else { ?>
