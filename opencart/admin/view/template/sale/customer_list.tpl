@@ -58,10 +58,10 @@
                 <a href="<?php echo $sort_date_added; ?>"><?php echo $column_date_added; ?></a>
                 <?php } ?></td>
               <td class="left"><?php echo $column_login; ?></td>
-                <!--
+
               <td class="left">No. Orders</td>
               <td class="left">No. Recommendations</td>
--->
+
               <td class="right"><?php echo $column_action; ?></td>
             </tr>
           </thead>
@@ -145,7 +145,7 @@
               <td class="left"><?php echo $customer['approved']; ?></td>
               <td class="left"><?php echo $customer['ip']; ?></td>
               <td class="left"><?php echo $customer['date_added']; ?></td>
-              
+
              <!-- <td class="left"><?php echo $customer['orders']; ?></td>
               <td class="left"><?php echo $customer['recommendations']; ?></td> -->
 
@@ -157,7 +157,11 @@
                   <option value="<?php echo $store['store_id']; ?>"><?php echo $store['name']; ?></option>
                   <?php } ?>
                 </select></td>
-              <td class="right"><?php foreach ($customer['action'] as $action) { ?>
+
+                 <td class="left"><?php echo $customer['orders']; ?></td>
+              <td class="left"><?php echo $customer['recommendations']; ?></td>
+
+                <td class="right"><?php foreach ($customer['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
                 <?php } ?></td>
             </tr>
