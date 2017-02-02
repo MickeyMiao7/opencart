@@ -30,6 +30,7 @@ class ControllerReportSaleOrder extends Controller {
         } else {
             $filter_date_start = date('Y-m-d', strtotime(date('Y') . '-' . date('m') . '-01'));
         }
+        $this->data['$filter_date_start'] = $filter_date_start;
 
         if (isset($this->request->get['filter_date_end'])) {
             $filter_date_end = $this->request->get['filter_date_end'];
