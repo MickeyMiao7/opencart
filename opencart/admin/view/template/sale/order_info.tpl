@@ -313,33 +313,11 @@
 
       <div id="tab-referrer" class="vtabs-content">
         <table class="form">
-          <!--
-          <?php if ($referrer_id) { ?>
-          <tr>
-            <td>
-              ID:
-            </td>
-            <td>
-              $referrer_id
-            </td>
-          </tr>
+        <tr>
+          <td>
 
-          <tr>
-            <td>
-              Name:
-            </td>
-            <td>
-              $referrer_name
-            </td>
-          </tr>
-
-          <?php } ?>
-
-          <?php else { ?>
-          <tr>No Referrer For This Order!</tr>
-          <?php } ?>
-          -->
-
+          </td>
+        </tr>
         </table>
 
 
