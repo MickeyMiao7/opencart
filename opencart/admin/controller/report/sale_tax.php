@@ -228,8 +228,9 @@ class ControllerReportSaleTax extends Controller {
         $this->data['button_export'] = $this->language->get('button_export');
 		
 		$this->data['token'] = $this->session->data['token'];
-		
-		$this->load->model('localisation/order_status');
+        $this->data['export'] = $this->url->link('report/sale_tax/export', 'token=' . $this->session->data['token'], 'SSL');
+
+        $this->load->model('localisation/order_status');
 		
 		$this->data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
 
