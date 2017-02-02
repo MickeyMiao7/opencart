@@ -1574,7 +1574,7 @@ class ControllerSaleOrder extends Controller {
             $this->data['referrer_id'] = $this->model_sale_order->getReferrerId($order_id);
             $this->data['referrer_name'] = '';
             if ($this->data['referrer_id']){
-                $this->data['referrer_name'] = $this->model_sale_order->getCustomerName($order_info['referrer_id']);
+                $this->data['referrer_name'] = $this->model_sale_order->getCustomerName($this->data['referrer_id']);
             }
 
 
