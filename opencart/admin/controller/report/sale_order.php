@@ -3,7 +3,64 @@ class ControllerReportSaleOrder extends Controller {
     public function export() {
         $this->load->model('report/sale');
 
-        $data = array();
+
+        if (isset($this->request->get['filter_date_start'])) {
+            $filter_date_start = $this->request->get['filter_date_start'];
+        } else {
+            $filter_date_start = date('Y-m-d', strtotime(date('Y') . '-' . date('m') . '-01'));
+        }
+
+        if (isset($this->request->get['filter_date_end'])) {
+            $filter_date_end = $this->request->get['filter_date_end'];
+        } else {
+            $filter_date_end = date('Y-m-d');
+        }
+
+        if (isset($this->request->get['filter_group'])) {
+            $filter_group = $this->request->get['filter_group'];
+        } else {
+            $filter_group = 'week';
+        }
+
+        if (isset($this->request->get['filter_order_status_id'])) {
+            $filter_order_status_id = $this->request->get['filter_order_status_id'];
+        } else {
+            $filter_order_status_id = 0;
+        }
+
+        if (isset($this->request->get['filter_customer_name'])) {
+            $filter_customer_name = $this->request->get['filter_customer_name'];
+        } else {
+            $filter_customer_name = '';
+        }
+
+        if (isset($this->request->get['page'])) {
+            $page = $this->request->get['page'];
+        } else {
+            $page = 1;
+        }
+
+
+        $data = array(
+            'filter_date_start'	     => $filter_date_start,
+            'filter_date_end'	     => $filter_date_end,
+            'filter_group'           => $filter_group,
+            'filter_order_status_id' => $filter_order_status_id,
+
+
+
+            'filter_customer_name'   => $filter_customer_name,
+
+
+
+
+
+            'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
+            'limit'                  => $this->config->get('config_admin_limit')
+        );
+
+//
+//        $data = array();
         $results = $this->model_report_sale->getOrders($data);
 
         foreach ($results as $result) {
@@ -108,21 +165,11 @@ class ControllerReportSaleOrder extends Controller {
 			$filter_order_status_id = 0;
 		}
 
-
-
         if (isset($this->request->get['filter_customer_name'])) {
             $filter_customer_name = $this->request->get['filter_customer_name'];
         } else {
             $filter_customer_name = '';
         }
-
-
-
-
-
-
-
-
 
         if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
