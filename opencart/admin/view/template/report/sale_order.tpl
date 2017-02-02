@@ -62,7 +62,7 @@
             <a href="<?php echo $export; ?>" class="button">
               <?php echo $button_export; ?>
             </a>
-            <a href="<?php echo ($export . '&filter_date_start=2015-01-01') ; ?>" class="button">
+            <a href="<?php echo ($export . '&filter_date_start=' . $) ; ?>" class="button">
               <?php echo $button_export; ?>
             </a>
           </td>

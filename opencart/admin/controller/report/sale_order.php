@@ -59,8 +59,7 @@ class ControllerReportSaleOrder extends Controller {
             'limit'                  => $this->config->get('config_admin_limit')
         );
 
-//
-//        $data = array();
+//is
         $results = $this->model_report_sale->getOrders($data);
 
         foreach ($results as $result) {
@@ -143,14 +142,18 @@ class ControllerReportSaleOrder extends Controller {
 
 		if (isset($this->request->get['filter_date_start'])) {
 			$filter_date_start = $this->request->get['filter_date_start'];
+			$this->data['filter_date_start'] = $this->request->get['filter_date_start'];
 		} else {
 			$filter_date_start = date('Y-m-d', strtotime(date('Y') . '-' . date('m') . '-01'));
+            $this->data['filter_date_start'] = date('Y-m-d', strtotime(date('Y') . '-' . date('m') . '-01'));
 		}
 
 		if (isset($this->request->get['filter_date_end'])) {
 			$filter_date_end = $this->request->get['filter_date_end'];
+            $this->data['filter_date_end'] = $this->request->get['filter_date_end'];
 		} else {
 			$filter_date_end = date('Y-m-d');
+            $this->data['filter_date_end'] = date('Y-m-d');
 		}
 		
 		if (isset($this->request->get['filter_group'])) {
