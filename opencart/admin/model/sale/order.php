@@ -494,7 +494,7 @@ class ModelSaleOrder extends Model {
 				'accept_language'         => $order_query->row['accept_language'],					
 				'date_added'              => $order_query->row['date_added'],
 				'date_modified'           => $order_query->row['date_modified'],
-                'referrer_id'             => $order_query->row['referrer_id']
+//                'referrer_id'             => $order_query->row['referrer_id']
 			);
 		} else {
 			return false;
