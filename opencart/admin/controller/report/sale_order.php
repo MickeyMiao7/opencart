@@ -149,6 +149,7 @@ class ControllerReportSaleOrder extends Controller {
         if (isset($this->request->get['filter_referrer_name'])) {
             $filter_referrer_name = $this->request->get['filter_referrer_name'];
             $this->data['filter_referrer_name'] = $this->request->get['filter_referrer_name'];
+            $this->data['referrer_name'] = $this->model_report_sale->getCustomerId("donald");
         } else {
             $filter_referrer_name = '';
             $this->data['filter_referrer_name'] = '';

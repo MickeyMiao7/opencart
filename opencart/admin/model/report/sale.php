@@ -1,6 +1,18 @@
 <?php
 class ModelReportSale extends Model {
-	public function getOrders($data = array()) {
+    public function getCustomerId($customer_name) {
+        if (is_string($customer_name)) {
+            $query = $this->db->query("SELECT * FROM  " . DB_PREFIX . "customer AND CONCAT(firstname, ' ', lastname) LIKE '%" . $customer_name) . "%'";
+            $row = $query->row;
+            return $row;
+        } else {
+            return "";
+        }
+    }
+
+
+
+    public function getOrders($data = array()) {
 		$sql = "SELECT MIN(tmp.date_added) AS date_start, MAX(tmp.date_added) AS date_end, COUNT(tmp.order_id) AS `orders`, SUM(tmp.products) AS products, SUM(tmp.tax) AS tax, SUM(tmp.total) AS total FROM (SELECT o.order_id, (SELECT SUM(op.quantity) FROM `" . DB_PREFIX . "order_product` op WHERE op.order_id = o.order_id GROUP BY op.order_id) AS products, (SELECT SUM(ot.value) FROM `" . DB_PREFIX . "order_total` ot WHERE ot.order_id = o.order_id AND ot.code = 'tax' GROUP BY ot.order_id) AS tax, o.total, o.date_added FROM `" . DB_PREFIX . "order` o"; 
 
 		if (!empty($data['filter_order_status_id'])) {
@@ -16,11 +28,6 @@ class ModelReportSale extends Model {
         if (!empty($data['filter_customer_name'])) {
             $sql .= " AND CONCAT(firstname, ' ', lastname) LIKE '%" . $this->db->escape($data['filter_customer_name']) . "%'";
         }
-
-        if (!empty($data['filter_referrer_name'])) {
-            $sql .= " AND CONCAT(firstname, ' ', lastname) LIKE '%" . $this->db->escape($data['filter_referfer_name']) . "%'";
-        }
-
 
 
 
