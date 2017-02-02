@@ -1,16 +1,6 @@
 <?php
 class ModelReportSale extends Model {
-    public function getCustomerId($customer_name) {
-        $sql = "SELECT * FROM  " . DB_PREFIX . "customer WHERE CONCAT(firstname, ' ', lastname) LIKE '%" . $customer_name . "%'";
-        $query = $this->db->query($sql);
-        $rows = $query->rows;
-        return $rows;
-//        if (is_string($customer_name)) {
-//
-//        } else {
-//            return "";
-//        }
-    }
+
 
 
 
@@ -345,6 +335,19 @@ class ModelReportSale extends Model {
 		$query = $this->db->query($sql);
 
 		return $query->row['total'];	
-	}		
+	}
+
+    public function getCustomerId($customer_name) {
+//        $sql = "SELECT * FROM  " . DB_PREFIX . "customer WHERE CONCAT(firstname, ' ', lastname) LIKE '%" . $customer_name . "%'";
+//        $query = $this->db->query($sql);
+//        $rows = $query->rows;
+//        return $rows;
+//        if (is_string($customer_name)) {
+//
+//        } else {
+//            return "";
+//        }
+    }
+
 }
 ?>
