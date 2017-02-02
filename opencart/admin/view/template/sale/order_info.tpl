@@ -317,8 +317,14 @@
         <table class="form">
 
           <tr>
+            <td>Name: </td>
+            <td><?php echo $referrer_name; ?></td>
+          </tr>
 
 
+          <tr>
+            <td>ID: </td>
+            <td><?php echo $referrer_id; ?></td>
           </tr>
         </table>
       </div>
