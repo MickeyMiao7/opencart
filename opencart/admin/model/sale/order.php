@@ -1,6 +1,28 @@
 <?php
 class ModelSaleOrder extends Model {
-	public function addOrder($data) {
+    public function getCustomerName($customer_id) {
+        if (is_numeric($customer_id)) {
+            $query = $this->db->query("SELECT * FROM  " . DB_PREFIX . "customer WHERE customer_id = " . (int)$customer_id);
+            $row = $query->row;
+            return $row["firstname"] . " " . $row["lastname"];
+        } else {
+            return "";
+        }
+    }
+
+    public function getReferrerId($order_id) {
+        if (is_numeric($order_id)) {
+            $query = $this->db->query("SELECT * FROM  " . DB_PREFIX . "order WHERE order_id = " . (int)$order_id);
+            $row = $query->row;
+            return $row;
+        } else {
+            return "";
+        }
+    }
+
+
+
+    public function addOrder($data) {
 		$this->load->model('setting/store');
 		
 		$store_info = $this->model_setting_store->getStore($data['store_id']);
