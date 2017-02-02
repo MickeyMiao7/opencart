@@ -19,7 +19,7 @@ class ControllerReportSaleOrder extends Controller {
 
 
 
-        
+
 
         $orders_data = array();
 
@@ -46,7 +46,7 @@ class ControllerReportSaleOrder extends Controller {
 
     public function export_to_csv($results, $name)
     {
-        $this->load->model('report/sale');
+//        $this->load->model('report/sale');
         foreach ($results as $result) {
             $orders[] = array(
                 'date_start' => date($this->language->get('date_format_short'), strtotime($result['date_start'])),
@@ -225,6 +225,8 @@ class ControllerReportSaleOrder extends Controller {
         if (isset($this->request->get['export'])) {
             export_to_csv($results, 'sale_order');
         }
+
+
 
 		foreach ($results as $result) {
 			$this->data['orders'][] = array(
