@@ -315,17 +315,9 @@
 
 
         <table class="form">
-
+          <?php echo $referrer_id); ?>
+          <?php echo $referrer_name; ?>
           <tr>
-            <?php if ($referrer_id) { ?>
-              <td>
-                <?php echo $referrer_id); ?>
-              </td>
-              <td>
-                <?php echo $referrer_name; ?>
-              </td>
-
-            <?php } ?>
 
 
           </tr>
