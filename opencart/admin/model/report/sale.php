@@ -10,7 +10,9 @@ class ModelReportSale extends Model {
 		}
 
         if (!empty($data['filter_referrer_id'])) {
-            $sql .= " AND o.referrer_id = '" . (int)$data['filter_referrer_id'] . "'";
+		    if($data['filter_referrer_id']){
+                $sql .= " AND o.referrer_id = '" . (int)$data['filter_referrer_id'] . "'";
+            }
         }
 
 

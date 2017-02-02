@@ -8,7 +8,6 @@
   <div class="box">
     <div class="heading">
       <h1><img src="view/image/report.png" alt="" /> <?php echo $heading_title; ?>
-        <?php echo $tmp; ?>
       </h1>
     </div>
     <div class="content">

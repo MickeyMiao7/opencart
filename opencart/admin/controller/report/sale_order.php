@@ -49,13 +49,18 @@ class ControllerReportSaleOrder extends Controller {
         }
 
 
+        $filter_referrer_id = 0;
+        if ($filter_referrer_name){
+            $filter_referrer_id = $this->model_report_sale->getCustomerId($filter_referrer_name);
+        }
+
         $data = array(
             'filter_date_start'	     => $filter_date_start,
             'filter_date_end'	     => $filter_date_end,
             'filter_group'           => $filter_group,
             'filter_order_status_id' => $filter_order_status_id,
             'filter_customer_name'   => $filter_customer_name,
-            'filter_referrer_name'   => $filter_referrer_name,
+            'filter_referrer_id'     => $filter_referrer_id,
             'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
             'limit'                  => $this->config->get('config_admin_limit')
         );
@@ -226,7 +231,7 @@ class ControllerReportSaleOrder extends Controller {
 		$this->load->model('report/sale');
 		
 		$this->data['orders'] = array();
-		
+
         $filter_referrer_id = 0;
         if ($filter_referrer_name){
             $filter_referrer_id = $this->model_report_sale->getCustomerId($filter_referrer_name);
