@@ -187,12 +187,9 @@ class ControllerReportSaleOrder extends Controller {
 		}
 
 
-
-
         if (isset($this->request->get['filter_customer_name'])) {
             $url .= '&filter_customer_name=' . $this->request->get['filter_customer_name'];
         }
-
 
         if (isset($this->request->get['filter_referrer_name'])) {
             $url .= '&filter_referrer_name=' . $this->request->get['filter_referrer_name'];
@@ -246,11 +243,12 @@ class ControllerReportSaleOrder extends Controller {
 		$results = $this->model_report_sale->getOrders($data);
 
 
-        $tmp = "michael";
-        $this->data['tmp'] = $this->model_report_sale->getCustomerId($tmp);
 
 
-
+        $referrer_id = 0;
+        if ($filter_referrer_name){
+            $referrer_id = $this->model_report_sale->getCustomerId($filter_referrer_name);
+        }
 
 
         if (isset($this->request->get['export'])) {
@@ -260,6 +258,10 @@ class ControllerReportSaleOrder extends Controller {
 
 
 		foreach ($results as $result) {
+            if($referrer_id && ($result['referrer_id'] != $referrer_id)){
+                continue;
+            }
+
 			$this->data['orders'][] = array(
 				'date_start' => date($this->language->get('date_format_short'), strtotime($result['date_start'])),
 				'date_end'   => date($this->language->get('date_format_short'), strtotime($result['date_end'])),
