@@ -1,7 +1,7 @@
 <?php
 class ControllerReportSaleOrder extends Controller {
     public function export() {
-        $this->load->model('report/sale');
+        $this->load->model('report/sale_order');
 
         $this->data['orders'] = array();
 
