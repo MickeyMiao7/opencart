@@ -14,6 +14,12 @@
       <div class="vtabs"><a href="#tab-order"><?php echo $tab_order; ?></a><a href="#tab-payment"><?php echo $tab_payment; ?></a>
         <?php if ($shipping_method) { ?>
         <a href="#tab-shipping"><?php echo $tab_shipping; ?></a>
+
+
+        <a href="#tab-referrer">Referrer</a>
+
+
+
         <?php } ?>
         <a href="#tab-product"><?php echo $tab_product; ?></a><a href="#tab-history"><?php echo $tab_history; ?></a>
         <?php if ($maxmind_id) { ?>
@@ -304,6 +310,20 @@
         </table>
       </div>
       <?php } ?>
+
+      <div id="tab-referrer" class="vtabs-content">
+        <table class="form">
+
+        </table>
+
+
+
+
+
+
+
+
+
       <div id="tab-product" class="vtabs-content">
         <table class="list">
           <thead>
