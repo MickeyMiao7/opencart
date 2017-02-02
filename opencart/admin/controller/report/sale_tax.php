@@ -66,7 +66,7 @@ class ControllerReportSaleTax extends Controller {
             );
         }
 
-        
+
 
         $orders_data = array();
         $orders_column = array('Start Date', 'End Date', 'Tax Title', 'No. Orders', 'Total');
@@ -225,6 +225,7 @@ class ControllerReportSaleTax extends Controller {
 		$this->data['entry_status'] = $this->language->get('entry_status');
 		
 		$this->data['button_filter'] = $this->language->get('button_filter');
+        $this->data['button_export'] = $this->language->get('button_export');
 		
 		$this->data['token'] = $this->session->data['token'];
 		
