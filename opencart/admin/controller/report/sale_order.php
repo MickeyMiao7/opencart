@@ -163,8 +163,7 @@ class ControllerReportSaleOrder extends Controller {
 		}
 
 
-		$tmp = "michael";
-        $this->data['tmp'] = $this->model_report_sale->getCustomerId($tmp);
+
 
 
 
@@ -247,7 +246,8 @@ class ControllerReportSaleOrder extends Controller {
 		$results = $this->model_report_sale->getOrders($data);
 
 
-
+        $tmp = "michael";
+        $this->data['tmp'] = $this->model_report_sale->getCustomerId($tmp);
 
 
 
