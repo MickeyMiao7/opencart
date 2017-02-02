@@ -34,6 +34,14 @@ class ControllerReportSaleOrder extends Controller {
             $filter_customer_name = '';
         }
 
+        if (isset($this->request->get['filter_referrer_name'])) {
+            $filter_referrer_name = $this->request->get['filter_referrer_name'];
+        } else {
+            $filter_referrer_name = '';
+        }
+
+
+
         if (isset($this->request->get['page'])) {
             $page = $this->request->get['page'];
         } else {
@@ -47,6 +55,7 @@ class ControllerReportSaleOrder extends Controller {
             'filter_group'           => $filter_group,
             'filter_order_status_id' => $filter_order_status_id,
             'filter_customer_name'   => $filter_customer_name,
+            'filter_referrer_name'   => $filter_referrer_name,
             'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
             'limit'                  => $this->config->get('config_admin_limit')
         );
@@ -137,6 +146,14 @@ class ControllerReportSaleOrder extends Controller {
             $this->data['filter_customer_name'] = '';
         }
 
+        if (isset($this->request->get['filter_referrer_name'])) {
+            $filter_referrer_name = $this->request->get['filter_referrer_name'];
+            $this->data['filter_referrer_name'] = $this->request->get['filter_referrer_name'];
+        } else {
+            $filter_customer_name = '';
+            $this->data['filter_customer_name'] = '';
+        }
+
         if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
             $this->data['page'] = $this->request->get['page'];
@@ -176,6 +193,10 @@ class ControllerReportSaleOrder extends Controller {
         }
 
 
+        if (isset($this->request->get['filter_referrer_name'])) {
+            $url .= '&filter_referrer_name=' . $this->request->get['filter_referrer_name'];
+        }
+
 
 
 		if (isset($this->request->get['page'])) {
@@ -214,6 +235,7 @@ class ControllerReportSaleOrder extends Controller {
 			'filter_group'           => $filter_group,
 			'filter_order_status_id' => $filter_order_status_id,
             'filter_customer_name'   => $filter_customer_name,
+            'filter_referrer_name'   => $filter_referrer_name,
 			'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
 			'limit'                  => $this->config->get('config_admin_limit')
 		);
@@ -267,6 +289,7 @@ class ControllerReportSaleOrder extends Controller {
 
 
         $this->data['entry_customer'] = $this->language->get('entry_customer');
+        $this->data['entry_referrer'] = $this->language->get('entry_referrer');
 
 
 
@@ -346,7 +369,9 @@ class ControllerReportSaleOrder extends Controller {
             $url .= '&filter_customer_name=' . $this->request->get['filter_customer_name'];
         }
 
-
+        if (isset($this->request->get['filter_referrer_name'])) {
+            $url .= '&filter_referrer_name=' . $this->request->get['filter_referrer_name'];
+        }
 
 
 
@@ -371,6 +396,7 @@ class ControllerReportSaleOrder extends Controller {
 
 
         $this->data['filter_customer_name'] = $filter_customer_name;
+        $this->data['filter_referrer_name'] = $filter_referrer_name;
 
 
 

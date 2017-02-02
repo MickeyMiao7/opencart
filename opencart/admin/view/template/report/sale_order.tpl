@@ -49,6 +49,10 @@
             <input type="text" name="filter_customer_name" value="<?php echo $filter_customer_name; ?>">
           </td>
 
+          <td><?php echo $entry_referrer; ?>
+            <input type="text" name="filter_referrer_name" value="<?php echo $filter_referrer_name; ?>">
+          </td>
+
 
 
 
@@ -157,12 +161,16 @@ function filter() {
         url += '&filter_customer_name=' + encodeURIComponent(filter_customer_name);
 
 
+    var filter_referrer_name = $('input[name="filter_referrer_name"]').val();
+    if (filter_referrer_name)
+        url += '&filter_referrer_name=' + encodeURIComponent(filter_referrer_name);
 
 
 
 
 
-	location = url;
+
+    location = url;
 }
 //-->
 </script>

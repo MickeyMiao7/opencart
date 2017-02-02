@@ -28,6 +28,7 @@ $_['entry_status']      = 'Order Status:';
 
 
 $_['entry_customer']    = 'Customer Name:';
+$_['entry_referrer']    = 'Referrer Name:';
 
 
 
