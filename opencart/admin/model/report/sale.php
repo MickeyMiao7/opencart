@@ -336,14 +336,13 @@ class ModelReportSale extends Model {
     public function getCustomerId($customer_name) {
         $sql = "SELECT * FROM  " . DB_PREFIX . "customer WHERE CONCAT(firstname, ' ', lastname) LIKE '%" . $customer_name . "%'";
         $query = $this->db->query($sql);
-        $rows = $query->rows;
-        return $rows;
-//        if (is_string($customer_name)) {
-//
-//        } else {
-//            return "";
-//        }
-//        return 0;
+        $row = $query->row;
+        if($row){
+            return $row['customer_id'];
+        }
+        else{
+            return 0;
+        }
     }
 
 }
