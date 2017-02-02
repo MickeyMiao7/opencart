@@ -316,6 +316,8 @@
 
         <table class="form">
 
+        <?php if ($referrer_name) { ?>
+
           <tr>
             <td>Name: </td>
             <td><?php echo $referrer_name; ?></td>
@@ -327,6 +329,9 @@
             <td><?php echo $referrer_id; ?></td>
           </tr>
         </table>
+
+        <?php } ?>
+
       </div>
 
 
