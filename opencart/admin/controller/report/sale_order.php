@@ -27,12 +27,12 @@ class ControllerReportSaleOrder extends Controller {
         } else {
             $filter_order_status_id = 0;
         }
-//
-//        if (isset($this->request->get['filter_customer_name'])) {
-//            $filter_customer_name = $this->request->get['filter_customer_name'];
-//        } else {
-//            $filter_customer_name = '';
-//        }
+
+        if (isset($this->request->get['filter_customer_name'])) {
+            $filter_customer_name = $this->request->get['filter_customer_name'];
+        } else {
+            $filter_customer_name = '';
+        }
 
         if (isset($this->request->get['page'])) {
             $page = $this->request->get['page'];
@@ -46,7 +46,7 @@ class ControllerReportSaleOrder extends Controller {
             'filter_date_end'	     => $filter_date_end,
             'filter_group'           => $filter_group,
             'filter_order_status_id' => $filter_order_status_id,
-//            'filter_customer_name'   => $filter_customer_name,
+            'filter_customer_name'   => $filter_customer_name,
             'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
             'limit'                  => $this->config->get('config_admin_limit')
         );
@@ -132,19 +132,20 @@ class ControllerReportSaleOrder extends Controller {
             $this->data['filter_order_status_id'] = 0;
 		}
 
-//        if (isset($this->request->get['filter_customer_name'])) {
-//            $filter_customer_name = $this->request->get['filter_customer_name'];
-//            $this->data['filter_customer_name'] = $this->request->get['filter_customer_name'];
-//        } else {
-//            $filter_customer_name = '';
-//            $this->data['filter_customer_name'] = '';
-//        }
+        if (isset($this->request->get['filter_customer_name'])) {
+            $filter_customer_name = $this->request->get['filter_customer_name'];
+            $this->data['filter_customer_name'] = $this->request->get['filter_customer_name'];
+        } else {
+            $filter_customer_name = '';
+            $this->data['filter_customer_name'] = '';
+        }
 
         if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
             $this->data['page'] = $this->request->get['page'];
 		} else {
 			$page = 1;
+            $this->data['page'] = 1;
 		}
 
 
@@ -215,15 +216,7 @@ class ControllerReportSaleOrder extends Controller {
 			'filter_date_end'	     => $filter_date_end, 
 			'filter_group'           => $filter_group,
 			'filter_order_status_id' => $filter_order_status_id,
-
-
-
             'filter_customer_name'   => $filter_customer_name,
-
-
-
-
-
 			'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
 			'limit'                  => $this->config->get('config_admin_limit')
 		);

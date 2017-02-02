@@ -136,6 +136,7 @@ class ControllerReportSaleTax extends Controller {
             $page = $this->request->get['page'];
             $this->data['page'] = $this->request->get['page'];
         } else {
+            $page = 1;
             $this->data['page'] = 1;
         }
 
