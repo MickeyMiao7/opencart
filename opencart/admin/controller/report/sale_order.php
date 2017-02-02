@@ -69,10 +69,7 @@ class ControllerReportSaleOrder extends Controller {
 
 
         $orders_data = array();
-
-
-        $orders_column = array('Start Date', 'End Date', 'No. Orders', 'No. Products', 'Tax', 'Total');
-
+        $orders_column = array('Date Start', 'Date End', 'No. Orders', 'No. Products', 'Tax', 'Total');
         $orders_data[0] = $orders_column;
 
         foreach($orders as $orders_row)
@@ -82,9 +79,9 @@ class ControllerReportSaleOrder extends Controller {
 
 
         require_once(DIR_SYSTEM . 'library/excel_xml.php');
-        $xls = new Excel_XML('UTF-8', false, 'Sales Orders Report');
+        $xls = new Excel_XML('UTF-8', false, 'Sale Orders Report');
         $xls->addArray($orders_data);
-        $xls->generateXML('sales_orders_report_'.date('Y-m-d _ H:i:s'));
+        $xls->generateXML('sale_orders_report_'.date('Y-m-d _ H:i:s'));
     }
 
 

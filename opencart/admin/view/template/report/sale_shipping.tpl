@@ -37,7 +37,17 @@
               <?php } ?>
               <?php } ?>
             </select></td>
-          <td style="text-align: right;"><a onclick="filter();" class="button"><?php echo $button_filter; ?></a></td>
+          <td style="text-align: right;"><a onclick="filter();" class="button"><?php echo $button_filter; ?></a>
+
+
+            <a href="<?php echo ($export . '&filter_date_start=' . $filter_date_start . '&filter_date_end=' . $filter_date_end . '&filter_group=' . $filter_group . '&filter_order_status_id=' . $filter_order_status_id . '&filter_customer_name=' . $filter_customer_name . '&page=' . $page) ; ?>" class="button">
+              <?php echo $button_export; ?>
+            </a>
+
+
+
+
+          </td>
         </tr>
       </table>
       <table class="list">

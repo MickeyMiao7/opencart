@@ -1,41 +1,146 @@
 <?php
 class ControllerReportSaleShipping extends Controller {
-	public function index() {     
+    public function export() {
+        $this->load->model('report/sale');
+
+
+        if (isset($this->request->get['filter_date_start'])) {
+            $filter_date_start = $this->request->get['filter_date_start'];
+        } else {
+            $filter_date_start = date('Y-m-d', strtotime(date('Y') . '-' . date('m') . '-01'));
+        }
+
+        if (isset($this->request->get['filter_date_end'])) {
+            $filter_date_end = $this->request->get['filter_date_end'];
+        } else {
+            $filter_date_end = date('Y-m-d');
+        }
+
+        if (isset($this->request->get['filter_group'])) {
+            $filter_group = $this->request->get['filter_group'];
+        } else {
+            $filter_group = 'week';
+        }
+
+        if (isset($this->request->get['filter_order_status_id'])) {
+            $filter_order_status_id = $this->request->get['filter_order_status_id'];
+        } else {
+            $filter_order_status_id = 0;
+        }
+
+//        if (isset($this->request->get['filter_customer_name'])) {
+//            $filter_customer_name = $this->request->get['filter_customer_name'];
+//        } else {
+//            $filter_customer_name = '';
+//        }
+
+        if (isset($this->request->get['page'])) {
+            $page = $this->request->get['page'];
+        } else {
+            $page = 1;
+        }
+
+
+        $data = array(
+            'filter_date_start'	     => $filter_date_start,
+            'filter_date_end'	     => $filter_date_end,
+            'filter_group'           => $filter_group,
+            'filter_order_status_id' => $filter_order_status_id,
+//            'filter_customer_name'   => $filter_customer_name,
+            'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
+            'limit'                  => $this->config->get('config_admin_limit')
+        );
+
+        $results = $this->model_report_sale->getShipping($data);
+
+        foreach ($results as $result) {
+            $orders[] = array(
+                'date_start' => date($this->language->get('date_format_short'), strtotime($result['date_start'])),
+                'date_end'   => date($this->language->get('date_format_short'), strtotime($result['date_end'])),
+                'title'      => $result['title'],
+                'orders'     => $result['orders'],
+                'total'      => $this->currency->format($result['total'], $this->config->get('config_currency'))
+            );
+        }
+
+
+
+
+
+        $orders_data = array();
+        $orders_column = array('Date Start ', 'Date End', 'Shipping Title', 'No. Orders', 'Total');
+        $orders_data[0] = $orders_column;
+
+        foreach($orders as $orders_row)
+        {
+            $orders_data[] = $orders_row;
+        }
+
+
+        require_once(DIR_SYSTEM . 'library/excel_xml.php');
+        $xls = new Excel_XML('UTF-8', false, 'Sale Shipping Report');
+        $xls->addArray($orders_data);
+        $xls->generateXML('sale_orders_report_'.date('Y-m-d _ H:i:s'));
+    }
+
+
+
+    public function index() {
 		$this->language->load('report/sale_shipping');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-		
-		if (isset($this->request->get['filter_date_start'])) {
-			$filter_date_start = $this->request->get['filter_date_start'];
-		} else {
-			$filter_date_start = '';
-		}
 
-		if (isset($this->request->get['filter_date_end'])) {
-			$filter_date_end = $this->request->get['filter_date_end'];
-		} else {
-			$filter_date_end = '';
-		}
-		
-		if (isset($this->request->get['filter_group'])) {
-			$filter_group = $this->request->get['filter_group'];
-		} else {
-			$filter_group = 'week';
-		}
-		
-		if (isset($this->request->get['filter_order_status_id'])) {
-			$filter_order_status_id = $this->request->get['filter_order_status_id'];
-		} else {
-			$filter_order_status_id = 0;
-		}	
-				
-		if (isset($this->request->get['page'])) {
-			$page = $this->request->get['page'];
-		} else {
-			$page = 1;
-		}
+        if (isset($this->request->get['filter_date_start'])) {
+            $filter_date_start = $this->request->get['filter_date_start'];
+            $this->data['filter_date_start'] = $this->request->get['filter_date_start'];
+        } else {
+            $filter_date_start = date('Y-m-d', strtotime(date('Y') . '-' . date('m') . '-01'));
+            $this->data['filter_date_start'] = date('Y-m-d', strtotime(date('Y') . '-' . date('m') . '-01'));
+        }
 
-		$url = '';
+        if (isset($this->request->get['filter_date_end'])) {
+            $filter_date_end = $this->request->get['filter_date_end'];
+            $this->data['filter_date_end'] = $this->request->get['filter_date_end'];
+        } else {
+            $filter_date_end = date('Y-m-d');
+            $this->data['filter_date_end'] = date('Y-m-d');
+        }
+
+        if (isset($this->request->get['filter_group'])) {
+            $filter_group = $this->request->get['filter_group'];
+            $this->data['filter_group'] = $this->request->get['filter_group'];
+        } else {
+            $filter_group = 'week';
+            $this->data['filter_group'] = 'week';
+        }
+
+        if (isset($this->request->get['filter_order_status_id'])) {
+            $filter_order_status_id = $this->request->get['filter_order_status_id'];
+            $this->data['filter_order_status_id'] = $this->request->get['filter_order_status_id'];
+        } else {
+            $filter_order_status_id = 0;
+            $this->data['filter_order_status_id'] = 0;
+        }
+
+//        if (isset($this->request->get['filter_customer_name'])) {
+//            $filter_customer_name = $this->request->get['filter_customer_name'];
+//            $this->data['filter_customer_name'] = $this->request->get['filter_customer_name'];
+//        } else {
+//            $filter_customer_name = '';
+//            $this->data['filter_customer_name'] = '';
+//        }
+
+        if (isset($this->request->get['page'])) {
+            $page = $this->request->get['page'];
+            $this->data['page'] = $this->request->get['page'];
+        } else {
+            $page = 1;
+            $this->data['page'] = 1;
+        }
+
+
+
+        $url = '';
 		
 		if (isset($this->request->get['filter_date_start'])) {
 			$url .= '&filter_date_start=' . $this->request->get['filter_date_start'];
@@ -115,8 +220,11 @@ class ControllerReportSaleShipping extends Controller {
 		$this->data['entry_status'] = $this->language->get('entry_status');
 		
 		$this->data['button_filter'] = $this->language->get('button_filter');
-		
-		$this->data['token'] = $this->session->data['token'];
+        $this->data['button_export'] = $this->language->get('button_export');
+
+
+        $this->data['token'] = $this->session->data['token'];
+        $this->data['export'] = $this->url->link('report/sale_order/export', 'token=' . $this->session->data['token'], 'SSL');
 		
 		$this->load->model('localisation/order_status');
 		
