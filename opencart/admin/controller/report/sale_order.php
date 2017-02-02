@@ -1,7 +1,7 @@
 <?php
 class ControllerReportSaleOrder extends Controller {
     public function export() {
-        $this->load->model('report/sale_order');
+        $this->load->model('report/sale');
 
         $this->data['orders'] = array();
 
@@ -9,8 +9,81 @@ class ControllerReportSaleOrder extends Controller {
 
         $orders= array();
 
-        $results = $this->model_report_sale->getOrders($data);
+//        $results = $this->model_report_sale->getOrders($data);
+//
+//        foreach ($results as $result) {
+//            $orders[] = array(
+//                'date_start' => date($this->language->get('date_format_short'), strtotime($result['date_start'])),
+//                'date_end'   => date($this->language->get('date_format_short'), strtotime($result['date_end'])),
+//                'orders'     => $result['orders'],
+//                'products'   => $result['products'],
+//                'tax'        => $this->currency->format($result['tax'], $this->config->get('config_currency')),
+//                'total'      => $this->currency->format($result['total'], $this->config->get('config_currency'))
+//            );
+//        }
 
+
+
+
+        if (isset($this->request->get['filter_date_start'])) {
+            $filter_date_start = $this->request->get['filter_date_start'];
+        } else {
+            $filter_date_start = date('Y-m-d', strtotime(date('Y') . '-' . date('m') . '-01'));
+        }
+
+        if (isset($this->request->get['filter_date_end'])) {
+            $filter_date_end = $this->request->get['filter_date_end'];
+        } else {
+            $filter_date_end = date('Y-m-d');
+        }
+
+        if (isset($this->request->get['filter_group'])) {
+            $filter_group = $this->request->get['filter_group'];
+        } else {
+            $filter_group = 'week';
+        }
+
+        if (isset($this->request->get['filter_order_status_id'])) {
+            $filter_order_status_id = $this->request->get['filter_order_status_id'];
+        } else {
+            $filter_order_status_id = 0;
+        }
+
+
+
+        if (isset($this->request->get['filter_customer_name'])) {
+            $filter_customer_name = $this->request->get['filter_customer_name'];
+        } else {
+            $filter_customer_name = '';
+        }
+
+
+        if (isset($this->request->get['page'])) {
+            $page = $this->request->get['page'];
+        } else {
+            $page = 1;
+        }
+
+
+
+        $data = array(
+            'filter_date_start'	     => $filter_date_start,
+            'filter_date_end'	     => $filter_date_end,
+            'filter_group'           => $filter_group,
+            'filter_order_status_id' => $filter_order_status_id,
+
+
+
+            'filter_customer_name'   => $filter_customer_name,
+
+            'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
+            'limit'                  => $this->config->get('config_admin_limit')
+        );
+
+
+//        $order_total = $this->model_report_sale->getTotalOrders($data);
+
+        $results = $this->model_report_sale->getOrders($data);
         foreach ($results as $result) {
             $orders[] = array(
                 'date_start' => date($this->language->get('date_format_short'), strtotime($result['date_start'])),
@@ -22,9 +95,11 @@ class ControllerReportSaleOrder extends Controller {
             );
         }
 
+
+
+
         $orders_data = array();
 
-        $orders_column=array();
 
         $orders_column = array('Start Date', 'End Date', 'No Of Orders', 'No Of Products', 'Tax', 'Total');
 
@@ -34,6 +109,8 @@ class ControllerReportSaleOrder extends Controller {
         {
             $orders_data[]=   $orders_row;
         }
+
+
         require_once(DIR_SYSTEM . 'library/excel_xml.php');
         $xls = new Excel_XML('UTF-8', false, 'Sales Orders Report');
 
@@ -185,12 +262,6 @@ class ControllerReportSaleOrder extends Controller {
 
 
 
-
-
-        // CSV
-//        if (isset($this->request->get['export'])) {
-//            export_to_csv($results, 'sale_order');
-//        }
 
 
 
