@@ -315,13 +315,13 @@
 
 
         <table class="form">
-          <?php echo $referrer_id); ?>
-          <?php echo $referrer_name; ?>
+
           <tr>
 
 
           </tr>
         </table>
+      </div>
 
 
 
