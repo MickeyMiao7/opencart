@@ -1569,7 +1569,7 @@ class ControllerSaleOrder extends Controller {
 			$this->data['shipping_method'] = $order_info['shipping_method'];
 
 			$this->data['referrer_id'] = $this->model_sale_order->getReferrerId($order_id);
-			
+
 
 			$this->data['payment_method'] = $order_info['payment_method'];
 			$this->data['total'] = $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value']);
