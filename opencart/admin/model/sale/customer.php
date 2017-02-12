@@ -13,7 +13,7 @@ class ModelSaleCustomer extends Model {
 
 
     public function getBestReferrerId() {
-        $query = $this->db->query("SELECT *, SUM(total) as sum FROM (SELECT * FROM " . DB_PREFIX . "order WHERE referrer_id IS NOT NULL AND referrer_id != 0) as t GROUP BY referrer_id ORDER BY sum DESC LIMIT 1");
+        $query = $this->db->query("SELECT referrer_id, count(*) as sum FROM (SELECT * FROM " . DB_PREFIX . "order WHERE referrer_id IS NOT NULL AND referrer_id != 0) as t GROUP BY referrer_id ORDER BY sum DESC LIMIT 1");
         return $query->row['referrer_id'];
     }
 
