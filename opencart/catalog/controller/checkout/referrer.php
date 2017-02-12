@@ -33,6 +33,7 @@ class ControllerCheckoutReferrer extends Controller {
                         // check whether the referrer id is a valid customer id
                         $this->load->model('account/customer');
                         $result = $this->model_account_customer->getCustomer($referrer_id);
+                        $this->data['result'] = $result;
                         if (count($result) == 0 || $referrer_id == '') {
                             $json['error']['warning'] = $this->language->get('error_referrer') . ' No such customer.';
                         } else {

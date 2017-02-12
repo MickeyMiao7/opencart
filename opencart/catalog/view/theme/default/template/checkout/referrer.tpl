@@ -2,6 +2,7 @@
   <p><?php echo $text_referrer; ?>
     <input type="text" value="<?php echo $referrer_id ?>">
   </p>
+  <?php echo $result; ?>
 </div>
 
 <div class="buttons">
