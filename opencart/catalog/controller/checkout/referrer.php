@@ -23,6 +23,9 @@ class ControllerCheckoutReferrer extends Controller {
         $json = array();
         if (isset($this->request->post['referrer_id'])) {
             $referrer_id = $this->request->post['referrer_id'];
+            if ($referrer_id == 0) {
+                $json['error']['warning'] = $this->language->get('error_referrer') . ' No such customer.';
+            }
             if (!empty($referrer_id)) {
                 if (!is_numeric($referrer_id)) {
                     $json['error']['warning'] = $this->language->get('error_referrer') . ' Must be a number.';
