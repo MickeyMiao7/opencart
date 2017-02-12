@@ -5,7 +5,7 @@ class ModelSaleCustomer extends Model {
 
 
     public function getBestCustomerId() {
-        $query = $this->db->query("SELECT *, SUM(total) as sum from " . DB_PREFIX . "order GROUP BY customer_id ORDER BY sum DESC LIMIT 1");
+        $query = $this->db->query("SELECT customer_id, count(*) as sum from " . DB_PREFIX . "order GROUP BY customer_id ORDER BY sum DESC LIMIT 1");
         return $query->row['customer_id'];
     }
 
